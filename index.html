@@ -12,7 +12,12 @@
   <main class="card" id="passwordScreen">
     <div class="emoji">💌</div>
     <h1>Private Love Access</h1>
-    <p class="subtitle">Ma fiye fawtik hek... prove eno enté my favorite person 😌</p>
+
+    <p class="subtitle">
+      Step 1 is done, bas mafiye fawtik hek...<br>
+      prove eno ente my favorite person<br>
+      w ktebe l mot cache li deja hallayti 😜
+    </p>
 
     <input type="password" id="passwordInput" placeholder="Enter the magic word..." autocomplete="off" />
     <button onclick="checkPassword()">Open my heart ❤️</button>
@@ -24,6 +29,9 @@
     <h1>Complete the gap</h1>
 
     <p class="subtitle">
+      W hala2 step 2, fi jemle seret eyellik yeha 982 marra<br>
+      (lyom bi siro 983), awlik btetzakaria?
+      <br><br>
       Je t'aime, w bhebik, w I love you,<br>
       w mon bebe eleo, w albe,<br>
       w <span class="gap">__________</span>,<br>
@@ -35,10 +43,85 @@
     <p class="error" id="answerError"></p>
   </main>
 
-  <main class="card hidden" id="letterScreen">
+  <main class="letter-card hidden" id="letterScreen">
     <div class="emoji">❤️</div>
-    <h1>Hi Bhebé</h1>
-    <p class="letter">Your letter will be here...</p>
+    <h1>Dear Eleonor,</h1>
+
+    <div class="letter">
+      <p>This letter is not just another “I love you” like all the ones before.</p>
+      <p>This one comes from a deeper place.</p>
+
+      <p>It’s me telling you that I don’t just love you…<br>
+      I choose you.<br>
+      Every day, in every situation, in every version of life.</p>
+
+      <p>I want to continue my life with you.<br>
+      Not just the good days… but everything that comes with it.</p>
+
+      <p>I want to be there for your smiles, your dreams, your fears, your hard moments, and your happiest ones.</p>
+
+      <p>More than anything, I want you to be happy.<br>
+      Truly happy.<br>
+      And I want to be part of that happiness… not the reason for your sadness.</p>
+
+      <p>I know things happened… and I know it wasn’t easy.<br>
+      But I need you to know that I’ve learned, I’ve understood, and I’ve changed where it matters.</p>
+
+      <p>What happened will never happen again.<br>
+      Not because I’m saying it… but because I feel it, deeply.</p>
+
+      <p>I want you to trust me again.<br>
+      Not forced, not rushed… but naturally, step by step.<br>
+      Because what we have is too real to lose.</p>
+
+      <p>And I want you to remember something important…</p>
+
+      <p>The Jad you met on day one…<br>
+      is still here.</p>
+
+      <p>The same heart.<br>
+      The same love.<br>
+      The same person who would do anything just to see you smile.<br>
+      And that will never change.</p>
+
+      <p>This website… this little thing we created…<br>
+      will stay saved. In my notes… and maybe in yours too.</p>
+
+      <p>And one day, we’ll come back to it.</p>
+
+      <p>At 40, with our kids around us, laughing.<br>
+      At 60, watching them grow, telling them how our story started.<br>
+      At 80, sitting next to each other, still together, still choosing each other every single day.</p>
+
+      <p>And even after this life…<br>
+      in every life we’ll ever have…<br>
+      I will still find you,<br>
+      and I will still choose you.</p>
+
+      <p>Because loving you is not something temporary.<br>
+      It’s something that became part of who I am.</p>
+
+      <p>These words come from the bottom of my heart.<br>
+      <span class="small-joke">(okay… ChatGPT helped a little 😜)</span></p>
+
+      <p>I love you more than words can ever explain…<br>
+      more than time can measure…<br>
+      and more than anything I’ve ever known.</p>
+
+      <p class="signature">Jad ❤️</p>
+    </div>
+
+    <button onclick="showScreen('proofScreen')">Your proof is here 📸</button>
+  </main>
+
+  <main class="card hidden" id="proofScreen">
+    <div class="emoji">📸</div>
+    <h1>Your Proof</h1>
+    <p class="subtitle">This is where the photo will be added ❤️</p>
+
+    <img src="proof.jpg" alt="Your proof photo" class="proof-photo" />
+
+    <button onclick="showScreen('letterScreen')">Back to letter 💌</button>
   </main>
 
   <script src="script.js"></script>
