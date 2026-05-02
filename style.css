@@ -2,10 +2,16 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
-  min-height: 100vh;
-  font-family: "Georgia", serif;
+  width: 100%;
+  min-height: 100%;
+  font-family: Georgia, serif;
+}
+
+body {
+  min-height: 100svh;
+  padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom));
   background: linear-gradient(135deg, #3b0a1e, #8b1e3f, #f7b2c4);
   display: flex;
   align-items: center;
@@ -15,9 +21,10 @@ body {
 }
 
 .card {
-  width: 90%;
-  max-width: 430px;
-  padding: 35px 25px;
+  width: min(100%, 430px);
+  max-height: calc(100svh - 36px);
+  overflow-y: auto;
+  padding: clamp(24px, 6vw, 38px) clamp(18px, 5vw, 28px);
   text-align: center;
   background: rgba(255, 255, 255, 0.14);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -28,18 +35,19 @@ body {
 }
 
 .emoji {
-  font-size: 52px;
+  font-size: clamp(40px, 10vw, 55px);
   margin-bottom: 10px;
 }
 
 h1 {
   margin: 10px 0;
-  font-size: 32px;
+  font-size: clamp(30px, 9vw, 46px);
+  line-height: 1.1;
 }
 
 .subtitle {
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: clamp(16px, 4.8vw, 20px);
+  line-height: 1.55;
   opacity: 0.95;
 }
 
@@ -50,7 +58,7 @@ input {
   border: none;
   border-radius: 50px;
   text-align: center;
-  font-size: 18px;
+  font-size: 17px;
   outline: none;
   background: rgba(255, 255, 255, 0.95);
   color: #8b1e3f;
@@ -66,19 +74,19 @@ button {
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.25s;
 }
 
-button:hover {
-  transform: scale(1.04);
-  background: #ffe1ea;
-}
-
-#errorMsg {
+.error {
   min-height: 24px;
   margin-top: 15px;
   color: #ffe1ea;
   font-size: 15px;
+}
+
+.gap {
+  font-weight: bold;
+  color: #ffe1ea;
+  letter-spacing: 2px;
 }
 
 .letter {
@@ -94,11 +102,13 @@ button:hover {
 .hearts::before,
 .hearts::after {
   content: "❤️ 💕 💗 💖 💘 ❤️ 💕 💗";
-  position: absolute;
+  position: fixed;
+  left: 0;
   width: 100%;
   font-size: 28px;
-  opacity: 0.22;
+  opacity: 0.18;
   animation: floatHearts 12s linear infinite;
+  pointer-events: none;
 }
 
 .hearts::after {
@@ -107,12 +117,8 @@ button:hover {
 }
 
 @keyframes floatHearts {
-  from {
-    transform: translateY(100vh);
-  }
-  to {
-    transform: translateY(-120vh);
-  }
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-120vh); }
 }
 
 @keyframes fadeIn {
