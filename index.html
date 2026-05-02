@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>For You ❤️</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -12,28 +12,33 @@
   <main class="card" id="passwordScreen">
     <div class="emoji">💌</div>
     <h1>Private Love Access</h1>
+    <p class="subtitle">Ma fiye fawtik hek... prove eno enté my favorite person 😌</p>
+
+    <input type="password" id="passwordInput" placeholder="Enter the magic word..." autocomplete="off" />
+    <button onclick="checkPassword()">Open my heart ❤️</button>
+    <p class="error" id="passwordError"></p>
+  </main>
+
+  <main class="card hidden" id="questionScreen">
+    <div class="emoji">🥰</div>
+    <h1>Complete the gap</h1>
+
     <p class="subtitle">
-      Ma fiye fawtik hek… prove eno enté my favorite person 😌
+      Je t'aime, w bhebik, w I love you,<br>
+      w mon bebe eleo, w albe,<br>
+      w <span class="gap">__________</span>,<br>
+      w marte l mousta2baliye.
     </p>
 
-    <input 
-      type="password" 
-      id="passwordInput" 
-      placeholder="Enter the magic word..."
-      autocomplete="off"
-    />
-
-    <button onclick="checkPassword()">Open my heart ❤️</button>
-
-    <p id="errorMsg"></p>
+    <input type="text" id="answerInput" placeholder="Write the missing words..." autocomplete="off" />
+    <button onclick="checkAnswer()">Continue ya hayete 💕</button>
+    <p class="error" id="answerError"></p>
   </main>
 
   <main class="card hidden" id="letterScreen">
     <div class="emoji">❤️</div>
     <h1>Hi Bhebé</h1>
-    <p class="letter">
-      Your letter will be here...
-    </p>
+    <p class="letter">Your letter will be here...</p>
   </main>
 
   <script src="script.js"></script>
