@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hearts"></div>
+
+  <main class="card" id="passwordScreen">
+    <div class="emoji">💌</div>
+    <h1>Private Love Access</h1>
+    <p class="subtitle">
+      Ma fiye fawtik hek… prove eno enté my favorite person 😌
+    </p>
+
+    <input 
+      type="password" 
+      id="passwordInput" 
+      placeholder="Enter the magic word..."
+      autocomplete="off"
+    />
+
+    <button onclick="checkPassword()">Open my heart ❤️</button>
+
+    <p id="errorMsg"></p>
+  </main>
+
+  <main class="card hidden" id="letterScreen">
+    <div class="emoji">❤️</div>
+    <h1>Hi Bhebé</h1>
+    <p class="letter">
+      Your letter will be here...
+    </p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
