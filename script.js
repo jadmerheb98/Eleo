@@ -1,12 +1,24 @@
 const correctPassword = "BHEBIK";
+const correctAnswer = "ALBO LA ALBE";
+
+function normalizeText(text) {
+  return text.trim().toUpperCase().replace(/\s+/g, " ");
+}
+
+function showScreen(screenId) {
+  document.getElementById("passwordScreen").classList.add("hidden");
+  document.getElementById("questionScreen").classList.add("hidden");
+  document.getElementById("letterScreen").classList.add("hidden");
+
+  document.getElementById(screenId).classList.remove("hidden");
+}
 
 function checkPassword() {
-  const input = document.getElementById("passwordInput").value.trim().toUpperCase();
-  const errorMsg = document.getElementById("errorMsg");
+  const input = normalizeText(document.getElementById("passwordInput").value);
+  const errorMsg = document.getElementById("passwordError");
 
   if (input === correctPassword) {
-    document.getElementById("passwordScreen").classList.add("hidden");
-    document.getElementById("letterScreen").classList.remove("hidden");
+    showScreen("questionScreen");
   } else {
     const messages = [
       "Nope 😌 hint: it's something I tell you kel yom...",
@@ -19,8 +31,21 @@ function checkPassword() {
   }
 }
 
-document.getElementById("passwordInput").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") {
-    checkPassword();
+function checkAnswer() {
+  const input = normalizeText(document.getElementById("answerInput").value);
+  const errorMsg = document.getElementById("answerError");
+
+  if (input === correctAnswer) {
+    showScreen("letterScreen");
+  } else {
+    errorMsg.textContent = "Hmm la2... think about what I call you 😌❤️";
   }
+}
+
+document.getElementById("passwordInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") checkPassword();
+});
+
+document.getElementById("answerInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") checkAnswer();
 });
