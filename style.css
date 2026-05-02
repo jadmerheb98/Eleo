@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Georgia", serif;
+  background: linear-gradient(135deg, #3b0a1e, #8b1e3f, #f7b2c4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+}
+
+.card {
+  width: 90%;
+  max-width: 430px;
+  padding: 35px 25px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 28px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  animation: fadeIn 0.8s ease;
+}
+
+.emoji {
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 32px;
+}
+
+.subtitle {
+  font-size: 17px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 22px 0 15px;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 18px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: #8b1e3f;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  background: #fff;
+  color: #8b1e3f;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: scale(1.04);
+  background: #ffe1ea;
+}
+
+#errorMsg {
+  min-height: 24px;
+  margin-top: 15px;
+  color: #ffe1ea;
+  font-size: 15px;
+}
+
+.letter {
+  margin-top: 25px;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.hidden {
+  display: none;
+}
+
+.hearts::before,
+.hearts::after {
+  content: "❤️ 💕 💗 💖 💘 ❤️ 💕 💗";
+  position: absolute;
+  width: 100%;
+  font-size: 28px;
+  opacity: 0.22;
+  animation: floatHearts 12s linear infinite;
+}
+
+.hearts::after {
+  animation-delay: 6s;
+  left: 30%;
+}
+
+@keyframes floatHearts {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(-120vh);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
