@@ -20,7 +20,8 @@ body {
   color: #fff;
 }
 
-.card {
+.card,
+.letter-card {
   width: min(100%, 430px);
   max-height: calc(100svh - 36px);
   overflow-y: auto;
@@ -32,6 +33,10 @@ body {
   backdrop-filter: blur(15px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
   animation: fadeIn 0.8s ease;
+}
+
+.letter-card {
+  max-width: 520px;
 }
 
 .emoji {
@@ -74,6 +79,7 @@ button {
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 15px;
 }
 
 .error {
@@ -91,8 +97,33 @@ button {
 
 .letter {
   margin-top: 25px;
-  font-size: 19px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.75;
+  text-align: left;
+}
+
+.letter p {
+  margin: 0 0 20px;
+}
+
+.signature {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.small-joke {
+  opacity: 0.85;
+  font-size: 15px;
+}
+
+.proof-photo {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  margin-top: 20px;
+  border-radius: 20px;
+  display: block;
 }
 
 .hidden {
