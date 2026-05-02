@@ -9,6 +9,7 @@ function showScreen(screenId) {
   document.getElementById("passwordScreen").classList.add("hidden");
   document.getElementById("questionScreen").classList.add("hidden");
   document.getElementById("letterScreen").classList.add("hidden");
+  document.getElementById("proofScreen").classList.add("hidden");
 
   document.getElementById(screenId).classList.remove("hidden");
 }
