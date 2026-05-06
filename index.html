@@ -251,5 +251,27 @@
   </main>
 
   <script src="script.js"></script>
+
+  <script>
+    function showScreen(screenId) {
+      const screens = [
+        "gamesHomeScreen",
+        "passwordScreen",
+        "questionScreen",
+        "letterScreen",
+        "proofScreen",
+        "puzzleScreen",
+        "codeScreen",
+        "secondLetterScreen"
+      ];
+
+      screens.forEach(id => {
+        const screen = document.getElementById(id);
+        if (screen) screen.classList.add("hidden");
+      });
+
+      document.getElementById(screenId).classList.remove("hidden");
+    }
+  </script>
 </body>
 </html>
