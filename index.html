@@ -9,10 +9,30 @@
 <body>
   <div class="hearts"></div>
 
-  <!-- HOME / STEP 1 -->
-  <main class="card" id="passwordScreen">
+  <!-- GAMES HOME -->
+  <main class="card" id="gamesHomeScreen">
+    <div class="emoji">🎮❤️</div>
+    <h1>Our Little Games</h1>
+
+    <p class="subtitle">
+      Choose a game ya albe,<br>
+      bas be careful... kel game fi shi khas fik ❤️
+    </p>
+
+    <button onclick="showScreen('passwordScreen')">
+      Game 1 — 02-05-2026 💌
+    </button>
+
+    <button class="secondary-btn" onclick="startPuzzle()">
+      Game 2 — 06-05-2026 🧩
+    </button>
+  </main>
+
+  <!-- GAME 1 / STEP 1 -->
+  <main class="card hidden" id="passwordScreen">
     <div class="emoji">💌</div>
-    <h1>Private Love Access</h1>
+    <h1>Game 1</h1>
+    <p class="subtitle">02-05-2026</p>
 
     <p class="subtitle">
       Step 1 is done, bas mafiye fawtik hek...<br>
@@ -23,14 +43,14 @@
     <input type="password" id="passwordInput" placeholder="Enter the magic word..." autocomplete="off" />
     <button onclick="checkPassword()">Open my heart ❤️</button>
 
-    <button class="secondary-btn" onclick="startPuzzle()">
-      Or start the secret puzzle 🧩
+    <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">
+      Back to games 🎮
     </button>
 
     <p class="error" id="passwordError"></p>
   </main>
 
-  <!-- STEP 2 -->
+  <!-- GAME 1 / STEP 2 -->
   <main class="card hidden" id="questionScreen">
     <div class="emoji">🥰</div>
     <h1>Complete the gap</h1>
@@ -50,7 +70,7 @@
     <p class="error" id="answerError"></p>
   </main>
 
-  <!-- FIRST LETTER -->
+  <!-- GAME 1 / FIRST LETTER -->
   <main class="letter-card hidden" id="letterScreen">
     <div class="emoji">❤️</div>
     <h1>Dear Eleonor,</h1>
@@ -120,9 +140,10 @@
     </div>
 
     <button onclick="showScreen('proofScreen')">Your proof is here 📸</button>
+    <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
-  <!-- PROOF PHOTO PAGE -->
+  <!-- GAME 1 / PROOF PHOTO PAGE -->
   <main class="card hidden" id="proofScreen">
     <div class="emoji">📸</div>
     <h1>Your Proof</h1>
@@ -133,10 +154,12 @@
     <button onclick="showScreen('letterScreen')">Back to letter 💌</button>
   </main>
 
-  <!-- PUZZLE PAGE -->
+  <!-- GAME 2 / PUZZLE PAGE -->
   <main class="puzzle-card hidden" id="puzzleScreen">
     <div class="emoji">🧩</div>
-    <h1>Secret Puzzle</h1>
+    <h1>Game 2</h1>
+    <p class="subtitle">06-05-2026</p>
+
     <p class="subtitle">
       Rakkbe el soura ya albe…<br>
       tap two pieces to switch them ❤️
@@ -145,7 +168,7 @@
     <div id="puzzleBoard" class="puzzle-board"></div>
 
     <button class="secondary-btn" onclick="shufflePuzzle()">Shuffle again 🔁</button>
-    <button onclick="showScreen('passwordScreen')">Back home 💌</button>
+    <button onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
   <!-- POPUP AFTER PUZZLE -->
@@ -158,7 +181,7 @@
     </div>
   </div>
 
-  <!-- CODE PAGE -->
+  <!-- GAME 2 / CODE PAGE -->
   <main class="card hidden" id="codeScreen">
     <div class="emoji">🔐</div>
     <h1>Final Secret Code</h1>
@@ -172,18 +195,59 @@
     <p class="error" id="notesCodeError"></p>
   </main>
 
-  <!-- SECOND LETTER PLACEHOLDER -->
+  <!-- GAME 2 / SECOND LETTER -->
   <main class="letter-card hidden" id="secondLetterScreen">
     <div class="emoji">💖</div>
-    <h1>My Second Letter</h1>
+    <h1>My beautiful Eleonor,</h1>
 
     <div class="letter">
+      <p>I don’t even know how to explain how beautiful you are to me.</p>
+
       <p>
-        This is where we will add the new letter later...
+        You are not just pretty in the way people notice when they see you.<br>
+        You are beautiful in the way you smile, in the way you look at me, in the way you make simple moments feel special.
+      </p>
+
+      <p>
+        Your eyes, your smile, your voice, your laugh… everything about you stays in my mind.<br>
+        Sometimes I look at you and I still can’t believe that someone like you is mine.
+      </p>
+
+      <p>
+        But what makes you even more beautiful is your heart.<br>
+        The way you care, the way you love, the way you make people around you feel warm.<br>
+        You have something special in you that I can’t find anywhere else.
+      </p>
+
+      <p>
+        I love you more than I can explain.<br>
+        More than any message, any letter, or any website can show.
+      </p>
+
+      <p>
+        I love your beauty, your soul, your little details, your reactions, your jokes, your softness, your craziness, and even the small things you don’t notice about yourself.
+      </p>
+
+      <p>
+        To me, you are perfect in a way that feels impossible to describe.<br>
+        You are my favorite face, my favorite person, my favorite feeling, and my safest place.
+      </p>
+
+      <p>
+        And every time I see you, I remember one thing:<br>
+        I don’t want anyone else.<br>
+        I want you, always.
+      </p>
+
+      <p>
+        I love you so much, mon bebe Eleo.<br>
+        More than yesterday, less than tomorrow.
       </p>
 
       <p class="signature">Jad ❤️</p>
     </div>
+
+    <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
   <script src="script.js"></script>
