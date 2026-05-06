@@ -1,6 +1,6 @@
 const correctPassword = "BHEBIK";
 const correctAnswer = "ALBO LA ALBE";
-const correctNotesCode = "968";
+const correctNotesCode = "986";
 
 const puzzleSize = 4;
 let puzzleOrder = [];
