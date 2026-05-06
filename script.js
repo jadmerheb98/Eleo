@@ -1,6 +1,6 @@
 const correctPassword = "BHEBIK";
 const correctAnswer = "ALBO LA ALBE";
-const correctNotesCode = "ELEO983";
+const correctNotesCode = "968";
 
 const puzzleSize = 4;
 let puzzleOrder = [];
@@ -100,7 +100,8 @@ function renderPuzzle() {
     const row = Math.floor(pieceNumber / puzzleSize);
     const col = pieceNumber % puzzleSize;
 
-    piece.style.backgroundPosition = `${(col / (puzzleSize - 1)) * 100}% ${(row / (puzzleSize - 1)) * 100}%`;
+    piece.style.backgroundPosition =
+      `${(col / (puzzleSize - 1)) * 100}% ${(row / (puzzleSize - 1)) * 100}%`;
 
     piece.addEventListener("click", () => selectPuzzlePiece(currentPosition));
     board.appendChild(piece);
@@ -122,7 +123,9 @@ function selectPuzzlePiece(position) {
     return;
   }
 
-  [puzzleOrder[selectedPiece], puzzleOrder[position]] = [puzzleOrder[position], puzzleOrder[selectedPiece]];
+  [puzzleOrder[selectedPiece], puzzleOrder[position]] =
+    [puzzleOrder[position], puzzleOrder[selectedPiece]];
+
   selectedPiece = null;
 
   renderPuzzle();
@@ -150,7 +153,8 @@ function checkNotesCode() {
   if (input === correctNotesCode) {
     showScreen("secondLetterScreen");
   } else {
-    errorMsg.textContent = "Not this one ya albe... check your notes again 😜";
+    errorMsg.textContent =
+      "Not this one ya albe... check your notes again 😜";
   }
 }
 
