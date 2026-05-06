@@ -9,6 +9,7 @@
 <body>
   <div class="hearts"></div>
 
+  <!-- HOME / STEP 1 -->
   <main class="card" id="passwordScreen">
     <div class="emoji">💌</div>
     <h1>Private Love Access</h1>
@@ -21,9 +22,15 @@
 
     <input type="password" id="passwordInput" placeholder="Enter the magic word..." autocomplete="off" />
     <button onclick="checkPassword()">Open my heart ❤️</button>
+
+    <button class="secondary-btn" onclick="startPuzzle()">
+      Or start the secret puzzle 🧩
+    </button>
+
     <p class="error" id="passwordError"></p>
   </main>
 
+  <!-- STEP 2 -->
   <main class="card hidden" id="questionScreen">
     <div class="emoji">🥰</div>
     <h1>Complete the gap</h1>
@@ -43,6 +50,7 @@
     <p class="error" id="answerError"></p>
   </main>
 
+  <!-- FIRST LETTER -->
   <main class="letter-card hidden" id="letterScreen">
     <div class="emoji">❤️</div>
     <h1>Dear Eleonor,</h1>
@@ -114,14 +122,68 @@
     <button onclick="showScreen('proofScreen')">Your proof is here 📸</button>
   </main>
 
+  <!-- PROOF PHOTO PAGE -->
   <main class="card hidden" id="proofScreen">
     <div class="emoji">📸</div>
     <h1>Your Proof</h1>
-
+    <p class="subtitle">This is where the photo will be added ❤️</p>
 
     <img src="proof.jpg" alt="Your proof photo" class="proof-photo" />
 
     <button onclick="showScreen('letterScreen')">Back to letter 💌</button>
+  </main>
+
+  <!-- PUZZLE PAGE -->
+  <main class="puzzle-card hidden" id="puzzleScreen">
+    <div class="emoji">🧩</div>
+    <h1>Secret Puzzle</h1>
+    <p class="subtitle">
+      Rakkbe el soura ya albe…<br>
+      tap two pieces to switch them ❤️
+    </p>
+
+    <div id="puzzleBoard" class="puzzle-board"></div>
+
+    <button class="secondary-btn" onclick="shufflePuzzle()">Shuffle again 🔁</button>
+    <button onclick="showScreen('passwordScreen')">Back home 💌</button>
+  </main>
+
+  <!-- POPUP AFTER PUZZLE -->
+  <div class="modal hidden" id="notesModal">
+    <div class="modal-box">
+      <div class="emoji">📝</div>
+      <h2>Bravo ya hayete ❤️</h2>
+      <p>Open your notes on your phone.</p>
+      <button onclick="openCodeScreen()">Continue 💕</button>
+    </div>
+  </div>
+
+  <!-- CODE PAGE -->
+  <main class="card hidden" id="codeScreen">
+    <div class="emoji">🔐</div>
+    <h1>Final Secret Code</h1>
+    <p class="subtitle">
+      Ktebe el code li l2ayti bel notes<br>
+      w khallina nkammel ❤️
+    </p>
+
+    <input type="text" id="notesCodeInput" placeholder="Enter the notes code..." autocomplete="off" />
+    <button onclick="checkNotesCode()">Unlock the next letter 💌</button>
+    <p class="error" id="notesCodeError"></p>
+  </main>
+
+  <!-- SECOND LETTER PLACEHOLDER -->
+  <main class="letter-card hidden" id="secondLetterScreen">
+    <div class="emoji">💖</div>
+    <h1>My Second Letter</h1>
+
+    <div class="letter">
+      <p>
+        This is where we will add the new letter later...
+      </p>
+
+      <p class="signature">Jad ❤️</p>
+    </div>
   </main>
 
   <script src="script.js"></script>
