@@ -26,6 +26,10 @@
     <button class="secondary-btn" onclick="startPuzzle()">
       Game 2 — 06-05-2026 🧩
     </button>
+
+    <button class="secondary-btn" onclick="showScreen('investigationScreen')">
+      Game 3 — The Memory Investigation 🕵️❤️
+    </button>
   </main>
 
   <!-- GAME 1 / STEP 1 -->
@@ -250,6 +254,135 @@
     <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
+  <!-- GAME 3 / THE MEMORY INVESTIGATION -->
+  <main class="card hidden" id="investigationScreen">
+    <div class="emoji">🕵️❤️</div>
+    <h1>The Memory Investigation</h1>
+
+    <p class="subtitle">
+      Detective Eleonor,<br>
+      your mission is to solve the relationship case file.<br><br>
+      Some memories are corrupted.<br>
+      Some clues are hidden in real life.<br>
+      Some answers only you would know.
+    </p>
+
+    <div id="inv1">
+      <h2>Level 1 — Date Cipher</h2>
+      <p class="subtitle">
+        27 letters are hidden.<br>
+        6 is the month.<br>
+        23 is the year.<br><br>
+        Find the day that started the case.
+      </p>
+
+      <input type="text" id="invAnswer1" placeholder="Enter code..." autocomplete="off" />
+      <button onclick="checkInv1()">Unlock 🔓</button>
+      <p class="error" id="invError1"></p>
+    </div>
+
+    <div id="inv2" class="hidden">
+      <h2>Level 2 — Pharmacy Lock</h2>
+      <p class="subtitle">
+        The place where the kiss happened<br>
+        is one year after 2001.
+      </p>
+
+      <input type="text" id="invAnswer2" placeholder="Enter code..." autocomplete="off" />
+      <button onclick="checkInv2()">Continue ❤️</button>
+      <p class="error" id="invError2"></p>
+    </div>
+
+    <div id="inv3" class="hidden">
+      <h2>Level 3 — Corrupted Ticket</h2>
+      <p class="subtitle">
+        Artist: J _ S _ P H A T T _ _ H<br><br>
+        Location: E _ D _ N
+      </p>
+
+      <input type="text" id="invAnswer3a" placeholder="Artist" autocomplete="off" />
+      <input type="text" id="invAnswer3b" placeholder="Location" autocomplete="off" />
+      <button onclick="checkInv3()">Restore Memory 🎫</button>
+      <p class="error" id="invError3"></p>
+    </div>
+
+    <div id="inv4" class="hidden">
+      <h2>Level 4 — Encrypted Message</h2>
+      <p class="subtitle">TBSJ4B</p>
+      <p class="subtitle">Hint: move every letter one step back.</p>
+
+      <input type="text" id="invAnswer4" placeholder="Decoded message" autocomplete="off" />
+      <button onclick="checkInv4()">Decrypt 🔐</button>
+      <p class="error" id="invError4"></p>
+    </div>
+
+    <div id="inv5" class="hidden">
+      <h2>Level 5 — Real Life Evidence</h2>
+      <p class="subtitle">
+        The next evidence is guarded<br>
+        by the one who always smiles.
+      </p>
+
+      <input type="text" id="invAnswer5" placeholder="Hidden clue" autocomplete="off" />
+      <button onclick="checkInv5()">Submit 🧸</button>
+      <p class="error" id="invError5"></p>
+    </div>
+
+    <div id="inv6" class="hidden">
+      <h2>Level 6 — Flower Cipher</h2>
+      <p class="subtitle">
+        The next evidence is on something<br>
+        that dies beautifully but speaks forever.
+      </p>
+
+      <input type="text" id="invAnswer6" placeholder="Flower code" autocomplete="off" />
+      <button onclick="checkInv6()">Continue 🌸</button>
+      <p class="error" id="invError6"></p>
+    </div>
+
+    <div id="inv7" class="hidden">
+      <h2>Level 7 — Alphabet Lock</h2>
+      <p class="subtitle">
+        15-1-19-9-19 / 10-2-5-9-12
+      </p>
+
+      <input type="text" id="invAnswer7" placeholder="Decoded location" autocomplete="off" />
+      <button onclick="checkInv7()">Unlock 🍸</button>
+      <p class="error" id="invError7"></p>
+    </div>
+
+    <div id="inv8" class="hidden">
+      <h2>Final Combination</h2>
+      <p class="subtitle">
+        Combine all solved memories:
+      </p>
+      <p class="subtitle">
+        DATE - KISS - PLACE - ARTIST - INSIDEJOKE - FLOWER - DRINKS
+      </p>
+
+      <input type="text" id="invAnswer8" placeholder="Final combination" autocomplete="off" />
+      <button onclick="checkInv8()">Final Lock 🔒</button>
+      <p class="error" id="invError8"></p>
+    </div>
+
+    <div id="invFinal" class="hidden">
+      <h2>Case Solved ❤️</h2>
+
+      <p class="subtitle">
+        After every clue, every memory,<br>
+        every laugh and every moment...
+      </p>
+
+      <h2>What are you to me?</h2>
+
+      <input type="text" id="invFinalAnswer" placeholder="Final answer" autocomplete="off" />
+      <button onclick="checkInvFinal()">Finish ❤️</button>
+      <p class="error" id="invFinalError"></p>
+    </div>
+
+    <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
+  </main>
+
   <script src="script.js"></script>
 
   <script>
@@ -262,7 +395,8 @@
         "proofScreen",
         "puzzleScreen",
         "codeScreen",
-        "secondLetterScreen"
+        "secondLetterScreen",
+        "investigationScreen"
       ];
 
       screens.forEach(id => {
