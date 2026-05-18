@@ -12,17 +12,20 @@ function normalizeText(text) {
 
 function showScreen(screenId) {
   const screens = [
+    "gamesHomeScreen",
     "passwordScreen",
     "questionScreen",
     "letterScreen",
     "proofScreen",
     "puzzleScreen",
     "codeScreen",
-    "secondLetterScreen"
+    "secondLetterScreen",
+    "investigationScreen"
   ];
 
   screens.forEach(id => {
-    document.getElementById(id).classList.add("hidden");
+    const screen = document.getElementById(id);
+    if (screen) screen.classList.add("hidden");
   });
 
   document.getElementById(screenId).classList.remove("hidden");
@@ -169,3 +172,204 @@ document.getElementById("answerInput").addEventListener("keydown", function(e) {
 document.getElementById("notesCodeInput").addEventListener("keydown", function(e) {
   if (e.key === "Enter") checkNotesCode();
 });
+
+/* ========================= */
+/* GAME 3 — THE INVESTIGATION */
+/* ========================= */
+
+function checkInv1() {
+
+  const answer =
+    normalizeText(document.getElementById("invAnswer1").value);
+
+  if(answer === "270623") {
+
+    document.getElementById("inv2")
+      .classList.remove("hidden");
+
+    document.getElementById("invError1")
+      .textContent = "Correct detective ❤️";
+
+  } else {
+
+    document.getElementById("invError1")
+      .textContent = "Wrong date detective 😌";
+
+  }
+}
+
+function checkInv2() {
+
+  const answer =
+    normalizeText(document.getElementById("invAnswer2").value);
+
+  if(answer === "2002") {
+
+    document.getElementById("inv3")
+      .classList.remove("hidden");
+
+    document.getElementById("invError2")
+      .textContent = "Memory restored ❤️";
+
+  } else {
+
+    document.getElementById("invError2")
+      .textContent = "Not the right pharmacy 😏";
+
+  }
+}
+
+function checkInv3() {
+
+  const artist =
+    normalizeText(document.getElementById("invAnswer3a").value);
+
+  const location =
+    normalizeText(document.getElementById("invAnswer3b").value);
+
+  if(
+    artist === "JOSEPH ATTIEH" &&
+    location === "EHDEN"
+  ) {
+
+    document.getElementById("inv4")
+      .classList.remove("hidden");
+
+    document.getElementById("invError3")
+      .textContent = "Ticket restored 🎫";
+
+  } else {
+
+    document.getElementById("invError3")
+      .textContent = "Corrupted memory 👀";
+
+  }
+}
+
+function checkInv4() {
+
+  const answer =
+    normalizeText(document.getElementById("invAnswer4").value);
+
+  if(answer === "SARI3A") {
+
+    document.getElementById("inv5")
+      .classList.remove("hidden");
+
+    document.getElementById("invError4")
+      .textContent = "Inside joke detected 😭";
+
+  } else {
+
+    document.getElementById("invError4")
+      .textContent = "Still encrypted 😜";
+
+  }
+}
+
+function checkInv5() {
+
+  const answer =
+    normalizeText(document.getElementById("invAnswer5").value);
+
+  if(answer === "OASIS=5-1-19-9-19") {
+
+    document.getElementById("inv6")
+      .classList.remove("hidden");
+
+    document.getElementById("invError5")
+      .textContent = "Evidence accepted 🧸";
+
+  } else {
+
+    document.getElementById("invError5")
+      .textContent = "Wrong hidden evidence";
+
+  }
+}
+
+function checkInv6() {
+
+  const answer =
+    normalizeText(document.getElementById("invAnswer6").value);
+
+  if(answer === "55") {
+
+    document.getElementById("inv7")
+      .classList.remove("hidden");
+
+    document.getElementById("invError6")
+      .textContent = "Flower clue restored 🌸";
+
+  } else {
+
+    document.getElementById("invError6")
+      .textContent = "The flower still hides something";
+
+  }
+}
+
+function checkInv7() {
+
+  const answer =
+    normalizeText(document.getElementById("invAnswer7").value);
+
+  if(answer === "OASIS JBEIL") {
+
+    document.getElementById("inv8")
+      .classList.remove("hidden");
+
+    document.getElementById("invError7")
+      .textContent = "Location unlocked 🍸";
+
+  } else {
+
+    document.getElementById("invError7")
+      .textContent = "Wrong location";
+
+  }
+}
+
+function checkInv8() {
+
+  const answer =
+    normalizeText(document.getElementById("invAnswer8").value);
+
+  if(
+    answer ===
+    "270623-2002-EHDEN-JOSEPH-SARI3A-55-OASIS"
+  ) {
+
+    document.getElementById("invFinal")
+      .classList.remove("hidden");
+
+    document.getElementById("invError8")
+      .textContent = "Master combination accepted 🔒";
+
+  } else {
+
+    document.getElementById("invError8")
+      .textContent = "Combination incorrect";
+
+  }
+}
+
+function checkInvFinal() {
+
+  const answer =
+    normalizeText(document.getElementById("invFinalAnswer").value);
+
+  if(answer === "MARTE L MOUSTA2BALIYE") {
+
+    document.getElementById("invFinalError")
+      .innerHTML =
+      "❤️ Case closed detective... you solved us.";
+
+  } else {
+
+    document.getElementById("invFinalError")
+      .innerHTML =
+      "You know the answer better than anyone 😌";
+
+  }
+}
