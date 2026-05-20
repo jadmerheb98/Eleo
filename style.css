@@ -23,7 +23,7 @@ body {
 .card,
 .letter-card,
 .puzzle-card,
-.protocol-card {
+.thousand-card {
   width: min(100%, 430px);
   max-height: calc(100svh - 36px);
   overflow-y: auto;
@@ -41,15 +41,9 @@ body {
   max-width: 520px;
 }
 
-.puzzle-card {
-  max-width: 500px;
-}
-
-.protocol-card {
-  max-width: 560px;
-  background: rgba(5, 5, 12, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 0 40px rgba(255, 70, 120, 0.22);
+.puzzle-card,
+.thousand-card {
+  max-width: 520px;
 }
 
 .emoji {
@@ -66,6 +60,10 @@ h1 {
 h2 {
   margin-top: 18px;
   margin-bottom: 10px;
+}
+
+h3 {
+  margin: 8px 0;
 }
 
 .subtitle {
@@ -237,149 +235,146 @@ button {
   left: 30%;
 }
 
-/* BLACKOUT PROTOCOL */
+/* GAME 3 */
 
-.protocol-top {
+.heart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 11px;
+  margin: 22px 0;
+}
+
+.heart-grid button {
+  border-radius: 18px;
+  min-height: 62px;
+  margin-top: 0;
+  font-size: 15px;
+}
+
+.piece-progress {
+  font-size: 15px;
+  opacity: 0.95;
+}
+
+.maze-board {
+  width: min(100%, 310px);
+  aspect-ratio: 1 / 1;
+  margin: 22px auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.maze-cell {
+  border-radius: 12px;
+  background: rgba(255,255,255,0.22);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  font-size: 13px;
-  letter-spacing: 2px;
-  opacity: 0.8;
-  margin-bottom: 18px;
+  font-size: 22px;
+  min-height: 48px;
 }
 
-.protocol-red-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ff3b6b;
-  box-shadow: 0 0 14px #ff3b6b;
-  animation: pulseDot 1s infinite;
+.maze-cell.wall {
+  background: rgba(40, 0, 20, 0.75);
 }
 
-.protocol-warning,
-.protocol-hint,
-.cipher-box,
-.final-protocol-message {
-  padding: 18px;
-  margin: 20px 0;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  line-height: 1.6;
+.maze-cell.goal {
+  background: rgba(255,255,255,0.42);
 }
 
-.protocol-hint {
-  color: #c9ffd9;
-}
-
-.switch-grid,
-.symbol-grid,
-.file-grid {
+.maze-controls {
   display: grid;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.switch-grid {
-  grid-template-columns: 1fr;
-}
-
-.symbol-grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.symbol-grid button {
-  font-size: 30px;
-}
-
-.file-grid {
   grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  max-width: 260px;
+  margin: 0 auto;
 }
 
-.file-grid button {
-  font-size: 12px;
-  padding: 12px 6px;
-  border-radius: 14px;
+.maze-controls button:first-child {
+  grid-column: 2;
 }
 
-.file-grid button.selected-file {
-  background: #c9ffd9;
-  color: #102116;
+.maze-controls button:nth-child(2) {
+  grid-column: 1;
 }
 
-.terminal-window {
-  background: #050608;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #c9ffd9;
-  font-family: monospace;
-  font-size: 13px;
-  text-align: left;
-  padding: 15px;
-  border-radius: 15px;
-  min-height: 170px;
-  max-height: 230px;
-  overflow-y: auto;
-  margin: 20px 0;
+.maze-controls button:nth-child(3) {
+  grid-column: 3;
 }
 
-.terminal-window p {
-  margin: 0 0 8px;
+.maze-controls button:nth-child(4) {
+  grid-column: 2;
 }
 
-.corrupted-message {
-  text-align: left;
-  font-family: monospace;
-  background: rgba(255,255,255,0.08);
-  padding: 15px;
-  border-radius: 15px;
-  margin: 20px 0;
-}
-
-.marked {
-  color: #c9ffd9;
-  font-weight: bold;
-  text-shadow: 0 0 10px #c9ffd9;
-}
-
-.protocol-progress {
-  margin: 15px 0;
-  opacity: 0.9;
-}
-
-.cipher-box {
-  font-family: monospace;
-  font-size: 24px;
-  letter-spacing: 2px;
-}
-
-.charge-bar {
-  width: 100%;
-  height: 18px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 50px;
-  overflow: hidden;
+.safe-code {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   margin: 25px 0;
 }
 
-#chargeFill {
-  width: 0%;
-  height: 100%;
-  background: #c9ffd9;
-  transition: width 0.1s linear;
+.safe-code > div {
+  background: rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 10px;
 }
 
-.final-protocol-message {
-  font-size: 22px;
+.safe-code div div {
+  font-size: 34px;
   font-weight: bold;
+  padding: 14px 0;
 }
 
-@keyframes pulseDot {
-  0% { opacity: 0.3; }
-  50% { opacity: 1; }
-  100% { opacity: 0.3; }
+.safe-code button {
+  padding: 10px;
+  margin-top: 6px;
+}
+
+.word-bank,
+.balance-columns {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.word-bank {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.word-bank button {
+  margin-top: 0;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.balance-columns {
+  grid-template-columns: 1fr 1fr;
+}
+
+.drop-box {
+  min-height: 120px;
+  padding: 10px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.drop-box button {
+  margin-top: 8px;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.final-message-box {
+  padding: 22px;
+  margin-top: 24px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.3);
+  font-size: 22px;
+  line-height: 1.7;
+  font-weight: bold;
 }
 
 @keyframes floatHearts {
