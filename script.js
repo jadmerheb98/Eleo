@@ -288,7 +288,7 @@ function changeDigit(index,change) {
 function checkSafe() {
   const code = safeDigits.join("");
 
-  if(code === "230824") {
+  if(code === "240823") {
     document.getElementById("safeError").textContent = "Safe unlocked ❤️";
     setTimeout(()=>{
       document.getElementById("safePuzzle").classList.add("hidden");
