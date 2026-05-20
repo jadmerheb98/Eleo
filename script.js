@@ -20,7 +20,7 @@ function showScreen(screenId) {
     "puzzleScreen",
     "codeScreen",
     "secondLetterScreen",
-    "protocolScreen"
+    "thousandScreen"
   ];
 
   screens.forEach(id => {
@@ -38,14 +38,7 @@ function checkPassword() {
   if (input === correctPassword) {
     showScreen("questionScreen");
   } else {
-    const messages = [
-      "Nope 😌 hint: it's something I tell you kel yom...",
-      "Hmm... try harder ya hayete ❤️",
-      "Access denied by the Ministry of Love 😂",
-      "Wrong password... bas ba3dik bhebek 😘"
-    ];
-
-    errorMsg.textContent = messages[Math.floor(Math.random() * messages.length)];
+    errorMsg.textContent = "Wrong password 😜";
   }
 }
 
@@ -56,7 +49,7 @@ function checkAnswer() {
   if (input === correctAnswer) {
     showScreen("letterScreen");
   } else {
-    errorMsg.textContent = "Hmm la2... think about what I call you 😌❤️";
+    errorMsg.textContent = "Hmm la2 😌❤️";
   }
 }
 
@@ -156,8 +149,7 @@ function checkNotesCode() {
   if (input === correctNotesCode) {
     showScreen("secondLetterScreen");
   } else {
-    errorMsg.textContent =
-      "Not this one ya albe... check your notes again 😜";
+    errorMsg.textContent = "Wrong code 😜";
   }
 }
 
@@ -174,272 +166,411 @@ document.getElementById("notesCodeInput").addEventListener("keydown", function(e
 });
 
 /* ========================= */
-/* GAME 3 — BLACKOUT PROTOCOL */
+/* GAME 3 */
 /* ========================= */
 
-let protocolSwitches = {
-  core: false,
-  signal: false,
-  memory: false
-};
-
-let terminalState = {
-  scanned: false
-};
-
-let symbolSequence = [];
-let correctSymbolSequence = ["star", "moon", "fire", "key"];
-
-let selectedFiles = [];
-let correctFiles = ["heartbeat", "echo", "pulse"];
-
-let holdInterval = null;
-let holdProgress = 0;
-
-function startProtocol() {
-  document.getElementById("protocolIntro").classList.add("hidden");
-  document.getElementById("protocolPhase1").classList.remove("hidden");
+function startThousandGame() {
+  document.getElementById("thousandIntro").classList.add("hidden");
+  document.getElementById("heartPuzzle").classList.remove("hidden");
 }
 
-function toggleProtocolSwitch(name) {
-  protocolSwitches[name] = !protocolSwitches[name];
+/* HEARTS */
 
-  const buttonMap = {
-    core: "switchCore",
-    signal: "switchSignal",
-    memory: "switchMemory"
-  };
+let selectedHearts = [];
+const correctHearts = [
+  "choose",
+  "you",
+  "always",
+  "again"
+];
 
-  const labelMap = {
-    core: "CORE",
-    signal: "SIGNAL",
-    memory: "MEMORY"
-  };
+function chooseHeart(word) {
 
-  const btn = document.getElementById(buttonMap[name]);
+  selectedHearts.push(word);
 
-  if (protocolSwitches[name]) {
-    btn.textContent = labelMap[name] + ": ON";
-    btn.classList.add("selected-file");
-  } else {
-    btn.textContent = labelMap[name] + ": OFF";
-    btn.classList.remove("selected-file");
-  }
+  document.getElementById("heartProgress").textContent =
+    selectedHearts.join(" ❤️ ");
 
-  if (protocolSwitches.core && protocolSwitches.signal && protocolSwitches.memory) {
-    document.getElementById("phase1Hint").classList.remove("hidden");
-  }
-}
+  const currentIndex = selectedHearts.length - 1;
 
-function checkPhase1() {
-  const input = normalizeText(document.getElementById("phase1Input").value);
-  const error = document.getElementById("phase1Error");
+  if(selectedHearts[currentIndex] !== correctHearts[currentIndex]) {
 
-  if (input === "WAKE THE ARCHIVE") {
-    document.getElementById("protocolPhase1").classList.add("hidden");
-    document.getElementById("protocolPhase2").classList.remove("hidden");
-  } else {
-    error.textContent = "The archive is still sleeping. Turn on the systems and use the phrase.";
-  }
-}
+    document.getElementById("heartError").textContent =
+      "Wrong order 😭";
 
-function terminalWrite(text) {
-  const log = document.getElementById("terminalLog");
-  const p = document.createElement("p");
-  p.textContent = "> " + text;
-  log.appendChild(p);
-  log.scrollTop = log.scrollHeight;
-}
+    setTimeout(() => {
+      resetHearts();
+    }, 1000);
 
-function runTerminalCommand() {
-  const inputElement = document.getElementById("terminalInput");
-  const command = inputElement.value.trim().toLowerCase();
-  const error = document.getElementById("terminalError");
-
-  error.textContent = "";
-  terminalWrite(command);
-  inputElement.value = "";
-
-  if (command === "/help") {
-    terminalWrite("Available commands:");
-    terminalWrite("/scan");
-    terminalWrite("/open vault-1000");
-    terminalWrite("/hint");
-  } else if (command === "/hint") {
-    terminalWrite("Scan before opening anything.");
-  } else if (command === "/scan") {
-    terminalState.scanned = true;
-    terminalWrite("Scanning archive...");
-    terminalWrite("Archive found: vault-1000");
-    terminalWrite("Next command suggested: /open vault-1000");
-  } else if (command === "/open vault-1000") {
-    if (terminalState.scanned) {
-      terminalWrite("Vault opened.");
-      terminalWrite("Signal sequence required.");
-      setTimeout(() => {
-        document.getElementById("protocolPhase2").classList.add("hidden");
-        document.getElementById("protocolPhase3").classList.remove("hidden");
-      }, 700);
-    } else {
-      terminalWrite("Access denied. Run /scan first.");
-    }
-  } else {
-    terminalWrite("Unknown command. Type /help.");
-  }
-}
-
-document.getElementById("terminalInput").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") runTerminalCommand();
-});
-
-function pressSymbol(symbol) {
-  symbolSequence.push(symbol);
-
-  const symbolNames = {
-    star: "★",
-    moon: "☾",
-    fire: "◆",
-    key: "⌁"
-  };
-
-  document.getElementById("symbolProgress").textContent =
-    symbolSequence.map(s => symbolNames[s]).join(" ");
-
-  const currentIndex = symbolSequence.length - 1;
-
-  if (symbolSequence[currentIndex] !== correctSymbolSequence[currentIndex]) {
-    document.getElementById("symbolError").textContent =
-      "Wrong signal. The system reset.";
-    resetSymbolSequence();
     return;
   }
 
-  if (symbolSequence.length === correctSymbolSequence.length) {
-    document.getElementById("symbolError").textContent =
-      "Signal accepted.";
+  if(selectedHearts.length === correctHearts.length) {
+
+    document.getElementById("heartError").textContent =
+      "Piece collected ❤️";
+
     setTimeout(() => {
-      document.getElementById("protocolPhase3").classList.add("hidden");
-      document.getElementById("protocolPhase4").classList.remove("hidden");
-    }, 700);
+      document.getElementById("heartPuzzle").classList.add("hidden");
+      document.getElementById("mazePuzzle").classList.remove("hidden");
+      createMaze();
+    }, 800);
   }
 }
 
-function resetSymbolSequence() {
-  symbolSequence = [];
-  document.getElementById("symbolProgress").textContent = "none";
+function resetHearts() {
+  selectedHearts = [];
+  document.getElementById("heartProgress").textContent = "none";
+  document.getElementById("heartError").textContent = "";
 }
 
-function selectArchiveFile(file) {
-  if (selectedFiles.includes(file)) {
-    selectedFiles = selectedFiles.filter(f => f !== file);
-  } else {
-    if (selectedFiles.length < 3) {
-      selectedFiles.push(file);
-    }
-  }
+/* MAZE */
 
-  const buttons = document.querySelectorAll(".file-grid button");
-  buttons.forEach(btn => btn.classList.remove("selected-file"));
+const mazeLayout = [
+  ["start","","wall","",""],
+  ["wall","","wall","","wall"],
+  ["","","","","wall"],
+  ["wall","wall","","wall",""],
+  ["","","","","goal"]
+];
 
-  selectedFiles.forEach(selected => {
-    const matchingButton = Array.from(buttons).find(btn =>
-      btn.getAttribute("onclick").includes("'" + selected + "'")
-    );
+let playerPosition = { row:0, col:0 };
 
-    if (matchingButton) {
-      matchingButton.classList.add("selected-file");
-    }
+function createMaze() {
+
+  const board = document.getElementById("mazeBoard");
+  board.innerHTML = "";
+
+  mazeLayout.forEach((row,rowIndex)=>{
+
+    row.forEach((cell,colIndex)=>{
+
+      const div = document.createElement("div");
+
+      div.classList.add("maze-cell");
+
+      if(cell === "wall"){
+        div.classList.add("wall");
+      }
+
+      if(cell === "goal"){
+        div.classList.add("goal");
+        div.innerHTML = "🏁";
+      }
+
+      if(
+        playerPosition.row === rowIndex &&
+        playerPosition.col === colIndex
+      ){
+        div.innerHTML = "❤️";
+      }
+
+      board.appendChild(div);
+
+    });
+
   });
 
-  document.getElementById("fileProgress").textContent =
-    selectedFiles.length ? selectedFiles.join(", ") : "none";
 }
 
-function checkArchiveFiles() {
-  const error = document.getElementById("fileError");
+function moveMaze(direction){
 
-  const sortedSelected = [...selectedFiles].sort().join(",");
-  const sortedCorrect = [...correctFiles].sort().join(",");
+  let newRow = playerPosition.row;
+  let newCol = playerPosition.col;
 
-  if (sortedSelected === sortedCorrect) {
-    error.textContent = "Archive keys accepted.";
-    setTimeout(() => {
-      document.getElementById("protocolPhase4").classList.add("hidden");
-      document.getElementById("protocolPhase5").classList.remove("hidden");
-    }, 700);
-  } else {
-    error.textContent = "Wrong files. Hint: heartbeat, echo, pulse.";
+  if(direction === "up") newRow--;
+  if(direction === "down") newRow++;
+  if(direction === "left") newCol--;
+  if(direction === "right") newCol++;
+
+  if(
+    newRow < 0 ||
+    newCol < 0 ||
+    newRow >= 5 ||
+    newCol >= 5
+  ){
+    return;
   }
-}
 
-function resetArchiveFiles() {
-  selectedFiles = [];
-  document.getElementById("fileProgress").textContent = "none";
+  if(mazeLayout[newRow][newCol] === "wall"){
 
-  const buttons = document.querySelectorAll(".file-grid button");
-  buttons.forEach(btn => btn.classList.remove("selected-file"));
+    document.getElementById("mazeError").textContent =
+      "Blocked 😭";
 
-  document.getElementById("fileError").textContent = "";
-}
-
-function checkCipher() {
-  const answer = normalizeText(document.getElementById("cipherInput").value);
-  const error = document.getElementById("cipherError");
-
-  if (answer === "I CHOOSE YOU") {
-    error.textContent = "Mirror cipher solved.";
-    setTimeout(() => {
-      document.getElementById("protocolPhase5").classList.add("hidden");
-      document.getElementById("protocolPhase6").classList.remove("hidden");
-    }, 700);
-  } else {
-    error.textContent = "Not decoded yet. Hint: A becomes Z, so R becomes I.";
+    return;
   }
+
+  playerPosition = {
+    row:newRow,
+    col:newCol
+  };
+
+  createMaze();
+
+  if(mazeLayout[newRow][newCol] === "goal"){
+
+    document.getElementById("mazeError").textContent =
+      "Maze completed ❤️";
+
+    setTimeout(()=>{
+
+      document.getElementById("mazePuzzle").classList.add("hidden");
+      document.getElementById("safePuzzle").classList.remove("hidden");
+
+    },800);
+
+  }
+
 }
 
-function startHolding() {
-  if (holdInterval) return;
+function resetMaze(){
 
-  document.getElementById("holdError").textContent = "";
+  playerPosition = {
+    row:0,
+    col:0
+  };
 
-  holdInterval = setInterval(() => {
-    holdProgress += 2;
-    document.getElementById("chargeFill").style.width = holdProgress + "%";
+  createMaze();
 
-    if (holdProgress >= 100) {
-      clearInterval(holdInterval);
-      holdInterval = null;
+  document.getElementById("mazeError").textContent = "";
 
-      document.getElementById("holdError").textContent = "System stabilized.";
+}
 
-      setTimeout(() => {
-        document.getElementById("protocolPhase6").classList.add("hidden");
-        document.getElementById("protocolFinal").classList.remove("hidden");
-      }, 800);
+/* SAFE */
+
+let safeDigits = [0,0,0,0];
+
+function changeDigit(index,change){
+
+  safeDigits[index] += change;
+
+  if(safeDigits[index] > 9) safeDigits[index] = 0;
+  if(safeDigits[index] < 0) safeDigits[index] = 9;
+
+  document.getElementById("digit"+index).textContent =
+    safeDigits[index];
+
+}
+
+function checkSafe(){
+
+  const code = safeDigits.join("");
+
+  if(code === "1000"){
+
+    document.getElementById("safeError").textContent =
+      "Safe unlocked ❤️";
+
+    setTimeout(()=>{
+
+      document.getElementById("safePuzzle").classList.add("hidden");
+      document.getElementById("balancePuzzle").classList.remove("hidden");
+
+      createBalanceGame();
+
+    },800);
+
+  }else{
+
+    document.getElementById("safeError").textContent =
+      "Wrong code 😭";
+
+  }
+
+}
+
+/* BALANCE */
+
+const balanceWords = [
+  { word:"first date", side:"past" },
+  { word:"first kiss", side:"past" },
+  { word:"first laugh", side:"past" },
+  { word:"home", side:"future" },
+  { word:"wedding", side:"future" },
+  { word:"family", side:"future" }
+];
+
+let placedWords = [];
+
+function createBalanceGame(){
+
+  const bank = document.getElementById("wordBank");
+  bank.innerHTML = "";
+
+  balanceWords.forEach((item,index)=>{
+
+    const btn = document.createElement("button");
+
+    btn.textContent =
+      item.word + " →";
+
+    btn.onclick = () => placeWord(index);
+
+    bank.appendChild(btn);
+
+  });
+
+}
+
+function placeWord(index){
+
+  const item = balanceWords[index];
+
+  if(placedWords.find(p=>p.word === item.word)){
+    return;
+  }
+
+  const choosePast =
+    confirm("Press OK for PAST\nPress Cancel for FUTURE");
+
+  const chosenSide =
+    choosePast ? "past" : "future";
+
+  placedWords.push({
+    word:item.word,
+    side:chosenSide
+  });
+
+  renderBalance();
+
+}
+
+function renderBalance(){
+
+  const pastBox =
+    document.getElementById("pastBox");
+
+  const futureBox =
+    document.getElementById("futureBox");
+
+  pastBox.innerHTML = "";
+  futureBox.innerHTML = "";
+
+  placedWords.forEach(item=>{
+
+    const btn =
+      document.createElement("button");
+
+    btn.textContent =
+      item.word;
+
+    if(item.side === "past"){
+      pastBox.appendChild(btn);
+    }else{
+      futureBox.appendChild(btn);
     }
-  }, 120);
+
+  });
+
 }
 
-function stopHolding() {
-  if (holdProgress >= 100) return;
+function checkBalance(){
 
-  clearInterval(holdInterval);
-  holdInterval = null;
-  holdProgress = 0;
+  if(placedWords.length !== balanceWords.length){
 
-  document.getElementById("chargeFill").style.width = "0%";
-  document.getElementById("holdError").textContent =
-    "Released too early. Start again.";
-}
+    document.getElementById("balanceError").textContent =
+      "Sort all words first 😌";
 
-function checkProtocolFinal() {
-  const answer = normalizeText(document.getElementById("protocolFinalInput").value);
-  const error = document.getElementById("protocolFinalError");
-
-  if (answer === "DAY 1000") {
-    error.textContent = "";
-    document.getElementById("protocolReward").classList.remove("hidden");
-  } else {
-    error.textContent = "Hint: today is not just a date. It is a day number.";
+    return;
   }
+
+  let correct = true;
+
+  placedWords.forEach(item=>{
+
+    const original =
+      balanceWords.find(w=>w.word === item.word);
+
+    if(original.side !== item.side){
+      correct = false;
+    }
+
+  });
+
+  if(correct){
+
+    document.getElementById("balanceError").textContent =
+      "Everything balanced ❤️";
+
+    setTimeout(()=>{
+
+      document.getElementById("balancePuzzle").classList.add("hidden");
+      document.getElementById("realCluePuzzle").classList.remove("hidden");
+
+    },800);
+
+  }else{
+
+    document.getElementById("balanceError").textContent =
+      "Some memories are misplaced 😭";
+
+  }
+
+}
+
+function resetBalance(){
+
+  placedWords = [];
+
+  renderBalance();
+
+  document.getElementById("balanceError").textContent = "";
+
+}
+
+/* REAL CLUE */
+
+function checkRealClue(){
+
+  const answer =
+    normalizeText(
+      document.getElementById("realClueInput").value
+    );
+
+  if(answer === "DAY 1000"){
+
+    document.getElementById("realClueError").textContent =
+      "Final piece collected ❤️";
+
+    setTimeout(()=>{
+
+      document.getElementById("realCluePuzzle").classList.add("hidden");
+      document.getElementById("thousandFinal").classList.remove("hidden");
+
+    },800);
+
+  }else{
+
+    document.getElementById("realClueError").textContent =
+      "Wrong hidden clue 😭";
+
+  }
+
+}
+
+/* FINAL */
+
+function checkThousandFinal(){
+
+  const answer =
+    normalizeText(
+      document.getElementById("thousandFinalInput").value
+    );
+
+  if(answer === "MARTE L MOUSTA2BALIYE"){
+
+    document.getElementById("thousandReward")
+      .classList.remove("hidden");
+
+    document.getElementById("thousandFinalError")
+      .textContent = "";
+
+  }else{
+
+    document.getElementById("thousandFinalError")
+      .textContent =
+      "You know the answer 😌❤️";
+
+  }
+
 }
