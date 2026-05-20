@@ -27,8 +27,8 @@
       Game 2 — 06-05-2026 🧩
     </button>
 
-    <button class="secondary-btn" onclick="showScreen('investigationScreen')">
-      Game 3 — The Memory Investigation 🕵️❤️
+    <button class="secondary-btn" onclick="showScreen('protocolScreen')">
+      Game 3 — The Blackout Protocol ⚠️
     </button>
   </main>
 
@@ -254,158 +254,222 @@
     <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
-  <!-- GAME 3 / THE MEMORY INVESTIGATION -->
-  <main class="card hidden" id="investigationScreen">
-    <div class="emoji">🕵️❤️</div>
-    <h1>The Memory Investigation</h1>
-
-    <p class="subtitle">
-      Detective Eleonor,<br>
-      your mission is to solve the relationship case file.<br><br>
-      Some memories are corrupted.<br>
-      Some clues are hidden in real life.<br>
-      Some answers only you would know.
-    </p>
-
-    <div id="inv1">
-      <h2>Level 1 — Date Cipher</h2>
-      <p class="subtitle">
-        27 letters are hidden.<br>
-        6 is the month.<br>
-        23 is the year.<br><br>
-        Find the day that started the case.
-      </p>
-
-      <input type="text" id="invAnswer1" placeholder="Enter code..." autocomplete="off" />
-      <button onclick="checkInv1()">Unlock 🔓</button>
-      <p class="error" id="invError1"></p>
+  <!-- GAME 3 / BLACKOUT PROTOCOL -->
+  <main class="protocol-card hidden" id="protocolScreen">
+    <div class="protocol-top">
+      <div class="protocol-red-dot"></div>
+      <span>BLACKOUT PROTOCOL</span>
     </div>
 
-    <div id="inv2" class="hidden">
-      <h2>Level 2 — Pharmacy Lock</h2>
+    <div id="protocolIntro">
+      <div class="emoji">⚠️</div>
+      <h1>System Blackout</h1>
       <p class="subtitle">
-        The place where the kiss happened<br>
-        is one year after 2001.
+        Day 1000 detected.<br>
+        Archive unstable.<br>
+        Manual recovery required.
       </p>
 
-      <input type="text" id="invAnswer2" placeholder="Enter code..." autocomplete="off" />
-      <button onclick="checkInv2()">Continue ❤️</button>
-      <p class="error" id="invError2"></p>
+      <div class="protocol-warning">
+        This is not a normal game.<br>
+        Read carefully. Try things. Use hints.
+      </div>
+
+      <button onclick="startProtocol()">Start Protocol</button>
+      <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
     </div>
 
-    <div id="inv3" class="hidden">
-      <h2>Level 3 — Corrupted Ticket</h2>
-      <p class="subtitle">
-        Artist: J _ S _ P H A T T _ _ H<br><br>
-        Location: E _ D _ N
-      </p>
-
-      <input type="text" id="invAnswer3a" placeholder="Artist" autocomplete="off" />
-      <input type="text" id="invAnswer3b" placeholder="Location" autocomplete="off" />
-      <button onclick="checkInv3()">Restore Memory 🎫</button>
-      <p class="error" id="invError3"></p>
-    </div>
-
-    <div id="inv4" class="hidden">
-      <h2>Level 4 — Encrypted Message</h2>
-      <p class="subtitle">TBSJ4B</p>
-      <p class="subtitle">Hint: move every letter one step back.</p>
-
-      <input type="text" id="invAnswer4" placeholder="Decoded message" autocomplete="off" />
-      <button onclick="checkInv4()">Decrypt 🔐</button>
-      <p class="error" id="invError4"></p>
-    </div>
-
-    <div id="inv5" class="hidden">
-      <h2>Level 5 — Real Life Evidence</h2>
-      <p class="subtitle">
-        The next evidence is guarded<br>
-        by the one who always smiles.
-      </p>
-
-      <input type="text" id="invAnswer5" placeholder="Hidden clue" autocomplete="off" />
-      <button onclick="checkInv5()">Submit 🧸</button>
-      <p class="error" id="invError5"></p>
-    </div>
-
-    <div id="inv6" class="hidden">
-      <h2>Level 6 — Flower Cipher</h2>
-      <p class="subtitle">
-        The next evidence is on something<br>
-        that dies beautifully but speaks forever.
-      </p>
-
-      <input type="text" id="invAnswer6" placeholder="Flower code" autocomplete="off" />
-      <button onclick="checkInv6()">Continue 🌸</button>
-      <p class="error" id="invError6"></p>
-    </div>
-
-    <div id="inv7" class="hidden">
-      <h2>Level 7 — Alphabet Lock</h2>
-      <p class="subtitle">
-        15-1-19-9-19 / 10-2-5-9-12
-      </p>
-
-      <input type="text" id="invAnswer7" placeholder="Decoded location" autocomplete="off" />
-      <button onclick="checkInv7()">Unlock 🍸</button>
-      <p class="error" id="invError7"></p>
-    </div>
-
-    <div id="inv8" class="hidden">
-      <h2>Final Combination</h2>
-      <p class="subtitle">
-        Combine all solved memories:
-      </p>
-      <p class="subtitle">
-        DATE - KISS - PLACE - ARTIST - INSIDEJOKE - FLOWER - DRINKS
-      </p>
-
-      <input type="text" id="invAnswer8" placeholder="Final combination" autocomplete="off" />
-      <button onclick="checkInv8()">Final Lock 🔒</button>
-      <p class="error" id="invError8"></p>
-    </div>
-
-    <div id="invFinal" class="hidden">
-      <h2>Case Solved ❤️</h2>
+    <div id="protocolPhase1" class="hidden">
+      <h1>Phase 1</h1>
+      <h2>Wake The Archive</h2>
 
       <p class="subtitle">
-        After every clue, every memory,<br>
-        every laugh and every moment...
+        Three systems are offline.<br>
+        Turn them all ON, then write the activation phrase.
       </p>
 
-      <h2>What are you to me?</h2>
+      <div class="switch-grid">
+        <button id="switchCore" onclick="toggleProtocolSwitch('core')">CORE: OFF</button>
+        <button id="switchSignal" onclick="toggleProtocolSwitch('signal')">SIGNAL: OFF</button>
+        <button id="switchMemory" onclick="toggleProtocolSwitch('memory')">MEMORY: OFF</button>
+      </div>
 
-      <input type="text" id="invFinalAnswer" placeholder="Final answer" autocomplete="off" />
-      <button onclick="checkInvFinal()">Finish ❤️</button>
-      <p class="error" id="invFinalError"></p>
+      <div id="phase1Hint" class="protocol-hint hidden">
+        Activation phrase unlocked:<br>
+        <strong>WAKE THE ARCHIVE</strong>
+      </div>
+
+      <input type="text" id="phase1Input" placeholder="Activation phrase..." autocomplete="off" />
+      <button onclick="checkPhase1()">Activate</button>
+      <p class="error" id="phase1Error"></p>
     </div>
 
-    <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
+    <div id="protocolPhase2" class="hidden">
+      <h1>Phase 2</h1>
+      <h2>Terminal Access</h2>
+
+      <p class="subtitle">
+        You are inside the system terminal.<br>
+        Type commands. Start with <strong>/help</strong>.
+      </p>
+
+      <div class="terminal-window" id="terminalLog">
+        <p>> Terminal online.</p>
+        <p>> Hint: type /help</p>
+      </div>
+
+      <input type="text" id="terminalInput" placeholder="Type command..." autocomplete="off" />
+      <button onclick="runTerminalCommand()">Run Command</button>
+      <p class="error" id="terminalError"></p>
+    </div>
+
+    <div id="protocolPhase3" class="hidden">
+      <h1>Phase 3</h1>
+      <h2>Signal Sequence</h2>
+
+      <p class="subtitle">
+        Press the four symbols in the correct order.<br>
+        The order is hidden inside the corrupted warning.
+      </p>
+
+      <div class="corrupted-message">
+        <p><span class="marked">★</span>ignal unstable.</p>
+        <p><span class="marked">☾</span>emory drifting.</p>
+        <p><span class="marked">◆</span>irewall burning.</p>
+        <p><span class="marked">⌁</span>ey fragment detected.</p>
+      </div>
+
+      <div class="symbol-grid">
+        <button onclick="pressSymbol('moon')">☾</button>
+        <button onclick="pressSymbol('star')">★</button>
+        <button onclick="pressSymbol('key')">⌁</button>
+        <button onclick="pressSymbol('fire')">◆</button>
+      </div>
+
+      <div class="protocol-progress">
+        Sequence: <span id="symbolProgress">none</span>
+      </div>
+
+      <button class="secondary-btn" onclick="resetSymbolSequence()">Reset Sequence</button>
+      <p class="error" id="symbolError"></p>
+    </div>
+
+    <div id="protocolPhase4" class="hidden">
+      <h1>Phase 4</h1>
+      <h2>Archive Trap</h2>
+
+      <p class="subtitle">
+        Nine files. Only three are real keys.<br>
+        Choose the files that feel alive, not technical.
+      </p>
+
+      <div class="file-grid">
+        <button onclick="selectArchiveFile('cache')">CACHE_404</button>
+        <button onclick="selectArchiveFile('heartbeat')">HEARTBEAT.LOG</button>
+        <button onclick="selectArchiveFile('temp')">TEMP_00</button>
+        <button onclick="selectArchiveFile('echo')">ECHO.FILE</button>
+        <button onclick="selectArchiveFile('error')">ERROR_RED</button>
+        <button onclick="selectArchiveFile('pulse')">PULSE.KEY</button>
+        <button onclick="selectArchiveFile('system')">SYSTEM.BIN</button>
+        <button onclick="selectArchiveFile('blank')">BLANK.DATA</button>
+        <button onclick="selectArchiveFile('ghost')">GHOST.TXT</button>
+      </div>
+
+      <div class="protocol-progress">
+        Selected: <span id="fileProgress">none</span>
+      </div>
+
+      <button onclick="checkArchiveFiles()">Unlock Archive</button>
+      <button class="secondary-btn" onclick="resetArchiveFiles()">Reset Files</button>
+      <p class="error" id="fileError"></p>
+    </div>
+
+    <div id="protocolPhase5" class="hidden">
+      <h1>Phase 5</h1>
+      <h2>The Mirror Cipher</h2>
+
+      <p class="subtitle">
+        Decode the sentence.<br>
+        Hint: A becomes Z. B becomes Y. C becomes X.
+      </p>
+
+      <div class="cipher-box">
+        R XSLLHV BLF
+      </div>
+
+      <input type="text" id="cipherInput" placeholder="Decoded sentence..." autocomplete="off" />
+      <button onclick="checkCipher()">Decode</button>
+      <p class="error" id="cipherError"></p>
+    </div>
+
+    <div id="protocolPhase6" class="hidden">
+      <h1>Phase 6</h1>
+      <h2>Stabilize The System</h2>
+
+      <p class="subtitle">
+        Hold the button until the system reaches 100%.<br>
+        If you release too early, it resets.
+      </p>
+
+      <div class="charge-bar">
+        <div id="chargeFill"></div>
+      </div>
+
+      <button
+        id="holdButton"
+        onmousedown="startHolding()"
+        onmouseup="stopHolding()"
+        onmouseleave="stopHolding()"
+        ontouchstart="startHolding()"
+        ontouchend="stopHolding()"
+      >
+        HOLD TO STABILIZE
+      </button>
+
+      <p class="error" id="holdError"></p>
+    </div>
+
+    <div id="protocolFinal" class="hidden">
+      <div class="emoji">❤️</div>
+      <h1>Protocol Complete</h1>
+
+      <p class="subtitle">
+        The system recovered one final message.
+      </p>
+
+      <div class="final-protocol-message">
+        1000 days.<br>
+        1000 little reasons.<br>
+        1000 times I would still choose you.
+      </div>
+
+      <p class="subtitle">
+        Final password:
+      </p>
+
+      <input type="text" id="protocolFinalInput" placeholder="Final password..." autocomplete="off" />
+      <button onclick="checkProtocolFinal()">Open Final Door</button>
+      <p class="error" id="protocolFinalError"></p>
+
+      <div id="protocolReward" class="hidden">
+        <h2>Final Door Opened ❤️</h2>
+        <p class="subtitle">
+          Happy 1000th day, my love.<br>
+          This was never about solving a system.<br>
+          It was about reaching the message hidden behind everything:
+        </p>
+
+        <div class="final-protocol-message">
+          I choose you.<br>
+          Yesterday, today, on day 1000,<br>
+          and in every day after this.
+        </div>
+      </div>
+
+      <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
+    </div>
   </main>
 
   <script src="script.js"></script>
-
-  <script>
-    function showScreen(screenId) {
-      const screens = [
-        "gamesHomeScreen",
-        "passwordScreen",
-        "questionScreen",
-        "letterScreen",
-        "proofScreen",
-        "puzzleScreen",
-        "codeScreen",
-        "secondLetterScreen",
-        "investigationScreen"
-      ];
-
-      screens.forEach(id => {
-        const screen = document.getElementById(id);
-        if (screen) screen.classList.add("hidden");
-      });
-
-      document.getElementById(screenId).classList.remove("hidden");
-    }
-  </script>
 </body>
 </html>
