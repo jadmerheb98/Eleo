@@ -20,7 +20,7 @@ function showScreen(screenId) {
     "puzzleScreen",
     "codeScreen",
     "secondLetterScreen",
-    "investigationScreen"
+    "protocolScreen"
   ];
 
   screens.forEach(id => {
@@ -174,202 +174,272 @@ document.getElementById("notesCodeInput").addEventListener("keydown", function(e
 });
 
 /* ========================= */
-/* GAME 3 — THE INVESTIGATION */
+/* GAME 3 — BLACKOUT PROTOCOL */
 /* ========================= */
 
-function checkInv1() {
+let protocolSwitches = {
+  core: false,
+  signal: false,
+  memory: false
+};
 
-  const answer =
-    normalizeText(document.getElementById("invAnswer1").value);
+let terminalState = {
+  scanned: false
+};
 
-  if(answer === "270623") {
+let symbolSequence = [];
+let correctSymbolSequence = ["star", "moon", "fire", "key"];
 
-    document.getElementById("inv2")
-      .classList.remove("hidden");
+let selectedFiles = [];
+let correctFiles = ["heartbeat", "echo", "pulse"];
 
-    document.getElementById("invError1")
-      .textContent = "Correct detective ❤️";
+let holdInterval = null;
+let holdProgress = 0;
 
+function startProtocol() {
+  document.getElementById("protocolIntro").classList.add("hidden");
+  document.getElementById("protocolPhase1").classList.remove("hidden");
+}
+
+function toggleProtocolSwitch(name) {
+  protocolSwitches[name] = !protocolSwitches[name];
+
+  const buttonMap = {
+    core: "switchCore",
+    signal: "switchSignal",
+    memory: "switchMemory"
+  };
+
+  const labelMap = {
+    core: "CORE",
+    signal: "SIGNAL",
+    memory: "MEMORY"
+  };
+
+  const btn = document.getElementById(buttonMap[name]);
+
+  if (protocolSwitches[name]) {
+    btn.textContent = labelMap[name] + ": ON";
+    btn.classList.add("selected-file");
   } else {
+    btn.textContent = labelMap[name] + ": OFF";
+    btn.classList.remove("selected-file");
+  }
 
-    document.getElementById("invError1")
-      .textContent = "Wrong date detective 😌";
-
+  if (protocolSwitches.core && protocolSwitches.signal && protocolSwitches.memory) {
+    document.getElementById("phase1Hint").classList.remove("hidden");
   }
 }
 
-function checkInv2() {
+function checkPhase1() {
+  const input = normalizeText(document.getElementById("phase1Input").value);
+  const error = document.getElementById("phase1Error");
 
-  const answer =
-    normalizeText(document.getElementById("invAnswer2").value);
-
-  if(answer === "2002") {
-
-    document.getElementById("inv3")
-      .classList.remove("hidden");
-
-    document.getElementById("invError2")
-      .textContent = "Memory restored ❤️";
-
+  if (input === "WAKE THE ARCHIVE") {
+    document.getElementById("protocolPhase1").classList.add("hidden");
+    document.getElementById("protocolPhase2").classList.remove("hidden");
   } else {
-
-    document.getElementById("invError2")
-      .textContent = "Not the right pharmacy 😏";
-
+    error.textContent = "The archive is still sleeping. Turn on the systems and use the phrase.";
   }
 }
 
-function checkInv3() {
+function terminalWrite(text) {
+  const log = document.getElementById("terminalLog");
+  const p = document.createElement("p");
+  p.textContent = "> " + text;
+  log.appendChild(p);
+  log.scrollTop = log.scrollHeight;
+}
 
-  const artist =
-    normalizeText(document.getElementById("invAnswer3a").value);
+function runTerminalCommand() {
+  const inputElement = document.getElementById("terminalInput");
+  const command = inputElement.value.trim().toLowerCase();
+  const error = document.getElementById("terminalError");
 
-  const location =
-    normalizeText(document.getElementById("invAnswer3b").value);
+  error.textContent = "";
+  terminalWrite(command);
+  inputElement.value = "";
 
-  if(
-    artist === "JOSEPH ATTIEH" &&
-    location === "EHDEN"
-  ) {
-
-    document.getElementById("inv4")
-      .classList.remove("hidden");
-
-    document.getElementById("invError3")
-      .textContent = "Ticket restored 🎫";
-
+  if (command === "/help") {
+    terminalWrite("Available commands:");
+    terminalWrite("/scan");
+    terminalWrite("/open vault-1000");
+    terminalWrite("/hint");
+  } else if (command === "/hint") {
+    terminalWrite("Scan before opening anything.");
+  } else if (command === "/scan") {
+    terminalState.scanned = true;
+    terminalWrite("Scanning archive...");
+    terminalWrite("Archive found: vault-1000");
+    terminalWrite("Next command suggested: /open vault-1000");
+  } else if (command === "/open vault-1000") {
+    if (terminalState.scanned) {
+      terminalWrite("Vault opened.");
+      terminalWrite("Signal sequence required.");
+      setTimeout(() => {
+        document.getElementById("protocolPhase2").classList.add("hidden");
+        document.getElementById("protocolPhase3").classList.remove("hidden");
+      }, 700);
+    } else {
+      terminalWrite("Access denied. Run /scan first.");
+    }
   } else {
-
-    document.getElementById("invError3")
-      .textContent = "Corrupted memory 👀";
-
+    terminalWrite("Unknown command. Type /help.");
   }
 }
 
-function checkInv4() {
+document.getElementById("terminalInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") runTerminalCommand();
+});
 
-  const answer =
-    normalizeText(document.getElementById("invAnswer4").value);
+function pressSymbol(symbol) {
+  symbolSequence.push(symbol);
 
-  if(answer === "SARI3A") {
+  const symbolNames = {
+    star: "★",
+    moon: "☾",
+    fire: "◆",
+    key: "⌁"
+  };
 
-    document.getElementById("inv5")
-      .classList.remove("hidden");
+  document.getElementById("symbolProgress").textContent =
+    symbolSequence.map(s => symbolNames[s]).join(" ");
 
-    document.getElementById("invError4")
-      .textContent = "Inside joke detected 😭";
+  const currentIndex = symbolSequence.length - 1;
 
-  } else {
+  if (symbolSequence[currentIndex] !== correctSymbolSequence[currentIndex]) {
+    document.getElementById("symbolError").textContent =
+      "Wrong signal. The system reset.";
+    resetSymbolSequence();
+    return;
+  }
 
-    document.getElementById("invError4")
-      .textContent = "Still encrypted 😜";
-
+  if (symbolSequence.length === correctSymbolSequence.length) {
+    document.getElementById("symbolError").textContent =
+      "Signal accepted.";
+    setTimeout(() => {
+      document.getElementById("protocolPhase3").classList.add("hidden");
+      document.getElementById("protocolPhase4").classList.remove("hidden");
+    }, 700);
   }
 }
 
-function checkInv5() {
+function resetSymbolSequence() {
+  symbolSequence = [];
+  document.getElementById("symbolProgress").textContent = "none";
+}
 
-  const answer =
-    normalizeText(document.getElementById("invAnswer5").value);
-
-  if(answer === "OASIS=5-1-19-9-19") {
-
-    document.getElementById("inv6")
-      .classList.remove("hidden");
-
-    document.getElementById("invError5")
-      .textContent = "Evidence accepted 🧸";
-
+function selectArchiveFile(file) {
+  if (selectedFiles.includes(file)) {
+    selectedFiles = selectedFiles.filter(f => f !== file);
   } else {
+    if (selectedFiles.length < 3) {
+      selectedFiles.push(file);
+    }
+  }
 
-    document.getElementById("invError5")
-      .textContent = "Wrong hidden evidence";
+  const buttons = document.querySelectorAll(".file-grid button");
+  buttons.forEach(btn => btn.classList.remove("selected-file"));
 
+  selectedFiles.forEach(selected => {
+    const matchingButton = Array.from(buttons).find(btn =>
+      btn.getAttribute("onclick").includes("'" + selected + "'")
+    );
+
+    if (matchingButton) {
+      matchingButton.classList.add("selected-file");
+    }
+  });
+
+  document.getElementById("fileProgress").textContent =
+    selectedFiles.length ? selectedFiles.join(", ") : "none";
+}
+
+function checkArchiveFiles() {
+  const error = document.getElementById("fileError");
+
+  const sortedSelected = [...selectedFiles].sort().join(",");
+  const sortedCorrect = [...correctFiles].sort().join(",");
+
+  if (sortedSelected === sortedCorrect) {
+    error.textContent = "Archive keys accepted.";
+    setTimeout(() => {
+      document.getElementById("protocolPhase4").classList.add("hidden");
+      document.getElementById("protocolPhase5").classList.remove("hidden");
+    }, 700);
+  } else {
+    error.textContent = "Wrong files. Hint: heartbeat, echo, pulse.";
   }
 }
 
-function checkInv6() {
+function resetArchiveFiles() {
+  selectedFiles = [];
+  document.getElementById("fileProgress").textContent = "none";
 
-  const answer =
-    normalizeText(document.getElementById("invAnswer6").value);
+  const buttons = document.querySelectorAll(".file-grid button");
+  buttons.forEach(btn => btn.classList.remove("selected-file"));
 
-  if(answer === "55") {
+  document.getElementById("fileError").textContent = "";
+}
 
-    document.getElementById("inv7")
-      .classList.remove("hidden");
+function checkCipher() {
+  const answer = normalizeText(document.getElementById("cipherInput").value);
+  const error = document.getElementById("cipherError");
 
-    document.getElementById("invError6")
-      .textContent = "Flower clue restored 🌸";
-
+  if (answer === "I CHOOSE YOU") {
+    error.textContent = "Mirror cipher solved.";
+    setTimeout(() => {
+      document.getElementById("protocolPhase5").classList.add("hidden");
+      document.getElementById("protocolPhase6").classList.remove("hidden");
+    }, 700);
   } else {
-
-    document.getElementById("invError6")
-      .textContent = "The flower still hides something";
-
+    error.textContent = "Not decoded yet. Hint: A becomes Z, so R becomes I.";
   }
 }
 
-function checkInv7() {
+function startHolding() {
+  if (holdInterval) return;
 
-  const answer =
-    normalizeText(document.getElementById("invAnswer7").value);
+  document.getElementById("holdError").textContent = "";
 
-  if(answer === "OASIS JBEIL") {
+  holdInterval = setInterval(() => {
+    holdProgress += 2;
+    document.getElementById("chargeFill").style.width = holdProgress + "%";
 
-    document.getElementById("inv8")
-      .classList.remove("hidden");
+    if (holdProgress >= 100) {
+      clearInterval(holdInterval);
+      holdInterval = null;
 
-    document.getElementById("invError7")
-      .textContent = "Location unlocked 🍸";
+      document.getElementById("holdError").textContent = "System stabilized.";
 
-  } else {
-
-    document.getElementById("invError7")
-      .textContent = "Wrong location";
-
-  }
+      setTimeout(() => {
+        document.getElementById("protocolPhase6").classList.add("hidden");
+        document.getElementById("protocolFinal").classList.remove("hidden");
+      }, 800);
+    }
+  }, 120);
 }
 
-function checkInv8() {
+function stopHolding() {
+  if (holdProgress >= 100) return;
 
-  const answer =
-    normalizeText(document.getElementById("invAnswer8").value);
+  clearInterval(holdInterval);
+  holdInterval = null;
+  holdProgress = 0;
 
-  if(
-    answer ===
-    "270623-2002-EHDEN-JOSEPH-SARI3A-55-OASIS"
-  ) {
-
-    document.getElementById("invFinal")
-      .classList.remove("hidden");
-
-    document.getElementById("invError8")
-      .textContent = "Master combination accepted 🔒";
-
-  } else {
-
-    document.getElementById("invError8")
-      .textContent = "Combination incorrect";
-
-  }
+  document.getElementById("chargeFill").style.width = "0%";
+  document.getElementById("holdError").textContent =
+    "Released too early. Start again.";
 }
 
-function checkInvFinal() {
+function checkProtocolFinal() {
+  const answer = normalizeText(document.getElementById("protocolFinalInput").value);
+  const error = document.getElementById("protocolFinalError");
 
-  const answer =
-    normalizeText(document.getElementById("invFinalAnswer").value);
-
-  if(answer === "MARTE L MOUSTA2BALIYE") {
-
-    document.getElementById("invFinalError")
-      .innerHTML =
-      "❤️ Case closed detective... you solved us.";
-
+  if (answer === "DAY 1000") {
+    error.textContent = "";
+    document.getElementById("protocolReward").classList.remove("hidden");
   } else {
-
-    document.getElementById("invFinalError")
-      .innerHTML =
-      "You know the answer better than anyone 😌";
-
+    error.textContent = "Hint: today is not just a date. It is a day number.";
   }
 }
