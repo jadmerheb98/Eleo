@@ -43,7 +43,7 @@ body {
 
 .puzzle-card,
 .thousand-card {
-  max-width: 520px;
+  max-width: 540px;
 }
 
 .emoji {
@@ -60,10 +60,6 @@ h1 {
 h2 {
   margin-top: 18px;
   margin-bottom: 10px;
-}
-
-h3 {
-  margin: 8px 0;
 }
 
 .subtitle {
@@ -174,13 +170,11 @@ button {
   background-size: 400% 400%;
   cursor: pointer;
   border: 2px solid rgba(255, 255, 255, 0.35);
-  transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
 }
 
 .puzzle-piece.selected {
   transform: scale(0.94);
   border: 3px solid #fff;
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.75);
 }
 
 .modal {
@@ -199,19 +193,7 @@ button {
   padding: 30px 22px;
   text-align: center;
   background: linear-gradient(135deg, #8b1e3f, #f7b2c4);
-  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 28px;
-  box-shadow: 0 22px 65px rgba(0, 0, 0, 0.45);
-}
-
-.modal-box h2 {
-  font-size: 30px;
-  margin: 5px 0 10px;
-}
-
-.modal-box p {
-  font-size: 20px;
-  line-height: 1.5;
 }
 
 .hidden {
@@ -235,20 +217,18 @@ button {
   left: 30%;
 }
 
-/* GAME 3 */
-
 .heart-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 11px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
   margin: 22px 0;
 }
 
 .heart-grid button {
-  border-radius: 18px;
-  min-height: 62px;
+  border-radius: 16px;
+  min-height: 54px;
   margin-top: 0;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .piece-progress {
@@ -257,22 +237,25 @@ button {
 }
 
 .maze-board {
-  width: min(100%, 310px);
+  width: min(100%, 360px);
   aspect-ratio: 1 / 1;
   margin: 22px auto;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
+  gap: 3px;
+}
+
+.big-maze {
+  grid-template-columns: repeat(9, 1fr);
 }
 
 .maze-cell {
-  border-radius: 12px;
+  border-radius: 7px;
   background: rgba(255,255,255,0.22);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  min-height: 48px;
+  font-size: 16px;
+  min-height: 31px;
 }
 
 .maze-cell.wall {
@@ -309,72 +292,44 @@ button {
 
 .safe-code {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 8px;
   margin: 25px 0;
+}
+
+.six-digits {
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .safe-code > div {
   background: rgba(255,255,255,0.12);
-  border-radius: 18px;
-  padding: 10px;
+  border-radius: 14px;
+  padding: 7px;
 }
 
 .safe-code div div {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: bold;
-  padding: 14px 0;
+  padding: 10px 0;
 }
 
 .safe-code button {
-  padding: 10px;
-  margin-top: 6px;
+  padding: 8px;
+  margin-top: 5px;
 }
 
-.word-bank,
-.balance-columns {
-  display: grid;
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.word-bank {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.word-bank button {
-  margin-top: 0;
-  border-radius: 16px;
-  font-size: 14px;
-}
-
-.balance-columns {
-  grid-template-columns: 1fr 1fr;
-}
-
-.drop-box {
-  min-height: 120px;
-  padding: 10px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-}
-
-.drop-box button {
-  margin-top: 8px;
-  padding: 10px;
-  font-size: 13px;
-}
-
-.final-message-box {
-  padding: 22px;
-  margin-top: 24px;
-  border-radius: 22px;
+.countdown-box {
+  padding: 24px;
+  margin: 22px 0;
+  border-radius: 24px;
   background: rgba(255,255,255,0.16);
   border: 1px solid rgba(255,255,255,0.3);
-  font-size: 22px;
-  line-height: 1.7;
+  font-size: 25px;
+  line-height: 1.6;
   font-weight: bold;
+}
+
+.final-letter {
+  text-align: left;
 }
 
 @keyframes floatHearts {
