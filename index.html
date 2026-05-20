@@ -9,7 +9,6 @@
 <body>
   <div class="hearts"></div>
 
-  <!-- GAMES HOME -->
   <main class="card" id="gamesHomeScreen">
     <div class="emoji">🎮❤️</div>
     <h1>Our Little Games</h1>
@@ -27,12 +26,11 @@
       Game 2 — 06-05-2026 🧩
     </button>
 
-    <button class="secondary-btn" onclick="showScreen('protocolScreen')">
-      Game 3 — The Blackout Protocol ⚠️
+    <button class="secondary-btn" onclick="showScreen('thousandScreen')">
+      Game 3 — The 1000 Pieces of Us ❤️
     </button>
   </main>
 
-  <!-- GAME 1 / STEP 1 -->
   <main class="card hidden" id="passwordScreen">
     <div class="emoji">💌</div>
     <h1>Game 1</h1>
@@ -54,7 +52,6 @@
     <p class="error" id="passwordError"></p>
   </main>
 
-  <!-- GAME 1 / STEP 2 -->
   <main class="card hidden" id="questionScreen">
     <div class="emoji">🥰</div>
     <h1>Complete the gap</h1>
@@ -74,7 +71,6 @@
     <p class="error" id="answerError"></p>
   </main>
 
-  <!-- GAME 1 / FIRST LETTER -->
   <main class="letter-card hidden" id="letterScreen">
     <div class="emoji">❤️</div>
     <h1>Dear Eleonor,</h1>
@@ -82,64 +78,23 @@
     <div class="letter">
       <p>This letter is not just another “I love you” like all the ones before.</p>
       <p>This one comes from a deeper place.</p>
-
-      <p>It’s me telling you that I don’t just love you…<br>
-      I choose you.<br>
-      Every day, in every situation, in every version of life.</p>
-
-      <p>I want to continue my life with you.<br>
-      Not just the good days… but everything that comes with it.</p>
-
+      <p>It’s me telling you that I don’t just love you…<br>I choose you.<br>Every day, in every situation, in every version of life.</p>
+      <p>I want to continue my life with you.<br>Not just the good days… but everything that comes with it.</p>
       <p>I want to be there for your smiles, your dreams, your fears, your hard moments, and your happiest ones.</p>
-
-      <p>More than anything, I want you to be happy.<br>
-      Truly happy.<br>
-      And I want to be part of that happiness… not the reason for your sadness.</p>
-
-      <p>I know things happened… and I know it wasn’t easy.<br>
-      But I need you to know that I’ve learned, I’ve understood, and I’ve changed where it matters.</p>
-
-      <p>What happened will never happen again.<br>
-      Not because I’m saying it… but because I feel it, deeply.</p>
-
-      <p>I want you to trust me again.<br>
-      Not forced, not rushed… but naturally, step by step.<br>
-      Because what we have is too real to lose.</p>
-
+      <p>More than anything, I want you to be happy.<br>Truly happy.<br>And I want to be part of that happiness… not the reason for your sadness.</p>
+      <p>I know things happened… and I know it wasn’t easy.<br>But I need you to know that I’ve learned, I’ve understood, and I’ve changed where it matters.</p>
+      <p>What happened will never happen again.<br>Not because I’m saying it… but because I feel it, deeply.</p>
+      <p>I want you to trust me again.<br>Not forced, not rushed… but naturally, step by step.<br>Because what we have is too real to lose.</p>
       <p>And I want you to remember something important…</p>
-
-      <p>The Jad you met on day one…<br>
-      is still here.</p>
-
-      <p>The same heart.<br>
-      The same love.<br>
-      The same person who would do anything just to see you smile.<br>
-      And that will never change.</p>
-
-      <p>This website… this little thing we created…<br>
-      will stay saved. In my notes… and maybe in yours too.</p>
-
+      <p>The Jad you met on day one…<br>is still here.</p>
+      <p>The same heart.<br>The same love.<br>The same person who would do anything just to see you smile.<br>And that will never change.</p>
+      <p>This website… this little thing we created…<br>will stay saved. In my notes… and maybe in yours too.</p>
       <p>And one day, we’ll come back to it.</p>
-
-      <p>At 40, with our kids around us, laughing.<br>
-      At 60, watching them grow, telling them how our story started.<br>
-      At 80, sitting next to each other, still together, still choosing each other every single day.</p>
-
-      <p>And even after this life…<br>
-      in every life we’ll ever have…<br>
-      I will still find you,<br>
-      and I will still choose you.</p>
-
-      <p>Because loving you is not something temporary.<br>
-      It’s something that became part of who I am.</p>
-
-      <p>These words come from the bottom of my heart.<br>
-      <span class="small-joke">(okay… ChatGPT helped a little 😜)</span></p>
-
-      <p>I love you more than words can ever explain…<br>
-      more than time can measure…<br>
-      and more than anything I’ve ever known.</p>
-
+      <p>At 40, with our kids around us, laughing.<br>At 60, watching them grow, telling them how our story started.<br>At 80, sitting next to each other, still together, still choosing each other every single day.</p>
+      <p>And even after this life…<br>in every life we’ll ever have…<br>I will still find you,<br>and I will still choose you.</p>
+      <p>Because loving you is not something temporary.<br>It’s something that became part of who I am.</p>
+      <p>These words come from the bottom of my heart.<br><span class="small-joke">(okay… ChatGPT helped a little 😜)</span></p>
+      <p>I love you more than words can ever explain…<br>more than time can measure…<br>and more than anything I’ve ever known.</p>
       <p class="signature">Jad ❤️</p>
     </div>
 
@@ -147,18 +102,14 @@
     <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
-  <!-- GAME 1 / PROOF PHOTO PAGE -->
   <main class="card hidden" id="proofScreen">
     <div class="emoji">📸</div>
     <h1>Your Proof</h1>
     <p class="subtitle">This is where the photo will be added ❤️</p>
-
     <img src="proof.jpg" alt="Your proof photo" class="proof-photo" />
-
     <button onclick="showScreen('letterScreen')">Back to letter 💌</button>
   </main>
 
-  <!-- GAME 2 / PUZZLE PAGE -->
   <main class="puzzle-card hidden" id="puzzleScreen">
     <div class="emoji">🧩</div>
     <h1>Game 2</h1>
@@ -175,7 +126,6 @@
     <button onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
-  <!-- POPUP AFTER PUZZLE -->
   <div class="modal hidden" id="notesModal">
     <div class="modal-box">
       <div class="emoji">📝</div>
@@ -185,7 +135,6 @@
     </div>
   </div>
 
-  <!-- GAME 2 / CODE PAGE -->
   <main class="card hidden" id="codeScreen">
     <div class="emoji">🔐</div>
     <h1>Final Secret Code</h1>
@@ -199,270 +148,183 @@
     <p class="error" id="notesCodeError"></p>
   </main>
 
-  <!-- GAME 2 / SECOND LETTER -->
   <main class="letter-card hidden" id="secondLetterScreen">
     <div class="emoji">💖</div>
     <h1>My beautiful Eleonor,</h1>
 
     <div class="letter">
       <p>I don’t even know how to explain how beautiful you are to me.</p>
-
-      <p>
-        You are not just pretty in the way people notice when they see you.<br>
-        You are beautiful in the way you smile, in the way you look at me, in the way you make simple moments feel special.
-      </p>
-
-      <p>
-        Your eyes, your smile, your voice, your laugh… everything about you stays in my mind.<br>
-        Sometimes I look at you and I still can’t believe that someone like you is mine.
-      </p>
-
-      <p>
-        But what makes you even more beautiful is your heart.<br>
-        The way you care, the way you love, the way you make people around you feel warm.<br>
-        You have something special in you that I can’t find anywhere else.
-      </p>
-
-      <p>
-        I love you more than I can explain.<br>
-        More than any message, any letter, or any website can show.
-      </p>
-
-      <p>
-        I love your beauty, your soul, your little details, your reactions, your jokes, your softness, your craziness, and even the small things you don’t notice about yourself.
-      </p>
-
-      <p>
-        To me, you are perfect in a way that feels impossible to describe.<br>
-        You are my favorite face, my favorite person, my favorite feeling, and my safest place.
-      </p>
-
-      <p>
-        And every time I see you, I remember one thing:<br>
-        I don’t want anyone else.<br>
-        I want you, always.
-      </p>
-
-      <p>
-        I love you so much, mon bebe Eleo.<br>
-        More than yesterday, less than tomorrow.
-      </p>
-
+      <p>You are not just pretty in the way people notice when they see you.<br>You are beautiful in the way you smile, in the way you look at me, in the way you make simple moments feel special.</p>
+      <p>Your eyes, your smile, your voice, your laugh… everything about you stays in my mind.<br>Sometimes I look at you and I still can’t believe that someone like you is mine.</p>
+      <p>But what makes you even more beautiful is your heart.<br>The way you care, the way you love, the way you make people around you feel warm.<br>You have something special in you that I can’t find anywhere else.</p>
+      <p>I love you more than I can explain.<br>More than any message, any letter, or any website can show.</p>
+      <p>I love your beauty, your soul, your little details, your reactions, your jokes, your softness, your craziness, and even the small things you don’t notice about yourself.</p>
+      <p>To me, you are perfect in a way that feels impossible to describe.<br>You are my favorite face, my favorite person, my favorite feeling, and my safest place.</p>
+      <p>And every time I see you, I remember one thing:<br>I don’t want anyone else.<br>I want you, always.</p>
+      <p>I love you so much, mon bebe Eleo.<br>More than yesterday, less than tomorrow.</p>
       <p class="signature">Jad ❤️</p>
     </div>
 
     <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
-  <!-- GAME 3 / BLACKOUT PROTOCOL -->
-  <main class="protocol-card hidden" id="protocolScreen">
-    <div class="protocol-top">
-      <div class="protocol-red-dot"></div>
-      <span>BLACKOUT PROTOCOL</span>
-    </div>
+  <main class="thousand-card hidden" id="thousandScreen">
+    <div class="emoji">❤️</div>
+    <h1>The 1000 Pieces of Us</h1>
 
-    <div id="protocolIntro">
-      <div class="emoji">⚠️</div>
-      <h1>System Blackout</h1>
+    <div id="thousandIntro">
       <p class="subtitle">
-        Day 1000 detected.<br>
-        Archive unstable.<br>
-        Manual recovery required.
+        Today is Day 1000.<br>
+        But the final message is locked into 5 pieces.<br><br>
+        Solve the games, collect the pieces,<br>
+        and open the final door.
       </p>
 
-      <div class="protocol-warning">
-        This is not a normal game.<br>
-        Read carefully. Try things. Use hints.
-      </div>
-
-      <button onclick="startProtocol()">Start Protocol</button>
+      <button onclick="startThousandGame()">Start Day 1000 ❤️</button>
       <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
     </div>
 
-    <div id="protocolPhase1" class="hidden">
-      <h1>Phase 1</h1>
-      <h2>Wake The Archive</h2>
-
+    <div id="heartPuzzle" class="hidden">
+      <h2>Piece 1 — The Locked Hearts</h2>
       <p class="subtitle">
-        Three systems are offline.<br>
-        Turn them all ON, then write the activation phrase.
+        Click the correct hearts in the correct order.<br>
+        Hint: build a sentence that feels like us.
       </p>
 
-      <div class="switch-grid">
-        <button id="switchCore" onclick="toggleProtocolSwitch('core')">CORE: OFF</button>
-        <button id="switchSignal" onclick="toggleProtocolSwitch('signal')">SIGNAL: OFF</button>
-        <button id="switchMemory" onclick="toggleProtocolSwitch('memory')">MEMORY: OFF</button>
+      <div class="heart-grid">
+        <button onclick="chooseHeart('home')">home</button>
+        <button onclick="chooseHeart('coffee')">coffee</button>
+        <button onclick="chooseHeart('choose')">choose</button>
+        <button onclick="chooseHeart('always')">always</button>
+        <button onclick="chooseHeart('again')">again</button>
+        <button onclick="chooseHeart('laugh')">laugh</button>
+        <button onclick="chooseHeart('you')">you</button>
+        <button onclick="chooseHeart('maybe')">maybe</button>
+        <button onclick="chooseHeart('trust')">trust</button>
       </div>
 
-      <div id="phase1Hint" class="protocol-hint hidden">
-        Activation phrase unlocked:<br>
-        <strong>WAKE THE ARCHIVE</strong>
-      </div>
-
-      <input type="text" id="phase1Input" placeholder="Activation phrase..." autocomplete="off" />
-      <button onclick="checkPhase1()">Activate</button>
-      <p class="error" id="phase1Error"></p>
+      <p class="piece-progress">Selected: <span id="heartProgress">none</span></p>
+      <button class="secondary-btn" onclick="resetHearts()">Reset</button>
+      <p class="error" id="heartError"></p>
     </div>
 
-    <div id="protocolPhase2" class="hidden">
-      <h1>Phase 2</h1>
-      <h2>Terminal Access</h2>
-
+    <div id="mazePuzzle" class="hidden">
+      <h2>Piece 2 — The Little Maze</h2>
       <p class="subtitle">
-        You are inside the system terminal.<br>
-        Type commands. Start with <strong>/help</strong>.
+        Move the heart from START to END.<br>
+        Avoid the dark blocks.
       </p>
 
-      <div class="terminal-window" id="terminalLog">
-        <p>> Terminal online.</p>
-        <p>> Hint: type /help</p>
+      <div class="maze-board" id="mazeBoard"></div>
+
+      <div class="maze-controls">
+        <button onclick="moveMaze('up')">↑</button>
+        <button onclick="moveMaze('left')">←</button>
+        <button onclick="moveMaze('right')">→</button>
+        <button onclick="moveMaze('down')">↓</button>
       </div>
 
-      <input type="text" id="terminalInput" placeholder="Type command..." autocomplete="off" />
-      <button onclick="runTerminalCommand()">Run Command</button>
-      <p class="error" id="terminalError"></p>
+      <button class="secondary-btn" onclick="resetMaze()">Restart Maze</button>
+      <p class="error" id="mazeError"></p>
     </div>
 
-    <div id="protocolPhase3" class="hidden">
-      <h1>Phase 3</h1>
-      <h2>Signal Sequence</h2>
-
+    <div id="safePuzzle" class="hidden">
+      <h2>Piece 3 — The Day 1000 Safe</h2>
       <p class="subtitle">
-        Press the four symbols in the correct order.<br>
-        The order is hidden inside the corrupted warning.
+        Set the safe code.<br>
+        Hint: today is not a date. It is a number.
       </p>
 
-      <div class="corrupted-message">
-        <p><span class="marked">★</span>ignal unstable.</p>
-        <p><span class="marked">☾</span>emory drifting.</p>
-        <p><span class="marked">◆</span>irewall burning.</p>
-        <p><span class="marked">⌁</span>ey fragment detected.</p>
+      <div class="safe-code">
+        <div>
+          <button onclick="changeDigit(0, 1)">+</button>
+          <div id="digit0">0</div>
+          <button onclick="changeDigit(0, -1)">−</button>
+        </div>
+        <div>
+          <button onclick="changeDigit(1, 1)">+</button>
+          <div id="digit1">0</div>
+          <button onclick="changeDigit(1, -1)">−</button>
+        </div>
+        <div>
+          <button onclick="changeDigit(2, 1)">+</button>
+          <div id="digit2">0</div>
+          <button onclick="changeDigit(2, -1)">−</button>
+        </div>
+        <div>
+          <button onclick="changeDigit(3, 1)">+</button>
+          <div id="digit3">0</div>
+          <button onclick="changeDigit(3, -1)">−</button>
+        </div>
       </div>
 
-      <div class="symbol-grid">
-        <button onclick="pressSymbol('moon')">☾</button>
-        <button onclick="pressSymbol('star')">★</button>
-        <button onclick="pressSymbol('key')">⌁</button>
-        <button onclick="pressSymbol('fire')">◆</button>
-      </div>
-
-      <div class="protocol-progress">
-        Sequence: <span id="symbolProgress">none</span>
-      </div>
-
-      <button class="secondary-btn" onclick="resetSymbolSequence()">Reset Sequence</button>
-      <p class="error" id="symbolError"></p>
+      <button onclick="checkSafe()">Open Safe 🔐</button>
+      <p class="error" id="safeError"></p>
     </div>
 
-    <div id="protocolPhase4" class="hidden">
-      <h1>Phase 4</h1>
-      <h2>Archive Trap</h2>
-
+    <div id="balancePuzzle" class="hidden">
+      <h2>Piece 4 — Past & Future</h2>
       <p class="subtitle">
-        Nine files. Only three are real keys.<br>
-        Choose the files that feel alive, not technical.
+        Sort every word to the right side.<br>
+        Past memories on the left, future dreams on the right.
       </p>
 
-      <div class="file-grid">
-        <button onclick="selectArchiveFile('cache')">CACHE_404</button>
-        <button onclick="selectArchiveFile('heartbeat')">HEARTBEAT.LOG</button>
-        <button onclick="selectArchiveFile('temp')">TEMP_00</button>
-        <button onclick="selectArchiveFile('echo')">ECHO.FILE</button>
-        <button onclick="selectArchiveFile('error')">ERROR_RED</button>
-        <button onclick="selectArchiveFile('pulse')">PULSE.KEY</button>
-        <button onclick="selectArchiveFile('system')">SYSTEM.BIN</button>
-        <button onclick="selectArchiveFile('blank')">BLANK.DATA</button>
-        <button onclick="selectArchiveFile('ghost')">GHOST.TXT</button>
+      <div id="wordBank" class="word-bank"></div>
+
+      <div class="balance-columns">
+        <div>
+          <h3>Past</h3>
+          <div id="pastBox" class="drop-box"></div>
+        </div>
+        <div>
+          <h3>Future</h3>
+          <div id="futureBox" class="drop-box"></div>
+        </div>
       </div>
 
-      <div class="protocol-progress">
-        Selected: <span id="fileProgress">none</span>
-      </div>
-
-      <button onclick="checkArchiveFiles()">Unlock Archive</button>
-      <button class="secondary-btn" onclick="resetArchiveFiles()">Reset Files</button>
-      <p class="error" id="fileError"></p>
+      <button onclick="checkBalance()">Check Sorting</button>
+      <button class="secondary-btn" onclick="resetBalance()">Reset Sorting</button>
+      <p class="error" id="balanceError"></p>
     </div>
 
-    <div id="protocolPhase5" class="hidden">
-      <h1>Phase 5</h1>
-      <h2>The Mirror Cipher</h2>
-
+    <div id="realCluePuzzle" class="hidden">
+      <h2>Piece 5 — The Real World Piece</h2>
       <p class="subtitle">
-        Decode the sentence.<br>
-        Hint: A becomes Z. B becomes Y. C becomes X.
+        The final piece is not on the screen.<br>
+        It is hiding somewhere close to a smile.
       </p>
 
-      <div class="cipher-box">
-        R XSLLHV BLF
-      </div>
+      <input type="text" id="realClueInput" placeholder="Enter the hidden code..." autocomplete="off" />
+      <button onclick="checkRealClue()">Unlock Final Door</button>
+      <p class="error" id="realClueError"></p>
 
-      <input type="text" id="cipherInput" placeholder="Decoded sentence..." autocomplete="off" />
-      <button onclick="checkCipher()">Decode</button>
-      <p class="error" id="cipherError"></p>
+      <p class="small-joke">
+        For testing: write DAY 1000
+      </p>
     </div>
 
-    <div id="protocolPhase6" class="hidden">
-      <h1>Phase 6</h1>
-      <h2>Stabilize The System</h2>
+    <div id="thousandFinal" class="hidden">
+      <div class="emoji">💖</div>
+      <h1>All Pieces Collected</h1>
 
       <p class="subtitle">
-        Hold the button until the system reaches 100%.<br>
-        If you release too early, it resets.
+        1000 days with you.<br>
+        1000 little moments.<br>
+        1000 reasons to choose you again.
       </p>
 
-      <div class="charge-bar">
-        <div id="chargeFill"></div>
-      </div>
+      <h2>Final Question</h2>
+      <p class="subtitle">What are you to me?</p>
 
-      <button
-        id="holdButton"
-        onmousedown="startHolding()"
-        onmouseup="stopHolding()"
-        onmouseleave="stopHolding()"
-        ontouchstart="startHolding()"
-        ontouchend="stopHolding()"
-      >
-        HOLD TO STABILIZE
-      </button>
+      <input type="text" id="thousandFinalInput" placeholder="Final answer..." autocomplete="off" />
+      <button onclick="checkThousandFinal()">Open Message ❤️</button>
+      <p class="error" id="thousandFinalError"></p>
 
-      <p class="error" id="holdError"></p>
-    </div>
-
-    <div id="protocolFinal" class="hidden">
-      <div class="emoji">❤️</div>
-      <h1>Protocol Complete</h1>
-
-      <p class="subtitle">
-        The system recovered one final message.
-      </p>
-
-      <div class="final-protocol-message">
-        1000 days.<br>
-        1000 little reasons.<br>
-        1000 times I would still choose you.
-      </div>
-
-      <p class="subtitle">
-        Final password:
-      </p>
-
-      <input type="text" id="protocolFinalInput" placeholder="Final password..." autocomplete="off" />
-      <button onclick="checkProtocolFinal()">Open Final Door</button>
-      <p class="error" id="protocolFinalError"></p>
-
-      <div id="protocolReward" class="hidden">
-        <h2>Final Door Opened ❤️</h2>
-        <p class="subtitle">
-          Happy 1000th day, my love.<br>
-          This was never about solving a system.<br>
-          It was about reaching the message hidden behind everything:
-        </p>
-
-        <div class="final-protocol-message">
-          I choose you.<br>
-          Yesterday, today, on day 1000,<br>
-          and in every day after this.
+      <div id="thousandReward" class="hidden">
+        <div class="final-message-box">
+          If life restarted tomorrow,<br>
+          I would search for you again.<br><br>
+          Happy 1000th day, my love ❤️
         </div>
       </div>
 
