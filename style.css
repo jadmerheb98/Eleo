@@ -22,7 +22,8 @@ body {
 
 .card,
 .letter-card,
-.puzzle-card {
+.puzzle-card,
+.protocol-card {
   width: min(100%, 430px);
   max-height: calc(100svh - 36px);
   overflow-y: auto;
@@ -42,6 +43,13 @@ body {
 
 .puzzle-card {
   max-width: 500px;
+}
+
+.protocol-card {
+  max-width: 560px;
+  background: rgba(5, 5, 12, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 40px rgba(255, 70, 120, 0.22);
 }
 
 .emoji {
@@ -229,22 +237,149 @@ button {
   left: 30%;
 }
 
-/* GAME 3 */
-#investigationScreen {
-  max-width: 520px;
+/* BLACKOUT PROTOCOL */
+
+.protocol-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  margin-bottom: 18px;
 }
 
-#investigationScreen h2 {
-  font-size: clamp(22px, 6vw, 30px);
+.protocol-red-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff3b6b;
+  box-shadow: 0 0 14px #ff3b6b;
+  animation: pulseDot 1s infinite;
 }
 
-#investigationScreen input {
-  margin-top: 14px;
-  margin-bottom: 8px;
+.protocol-warning,
+.protocol-hint,
+.cipher-box,
+.final-protocol-message {
+  padding: 18px;
+  margin: 20px 0;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  line-height: 1.6;
 }
 
-#investigationScreen .subtitle {
-  font-size: clamp(15px, 4.4vw, 19px);
+.protocol-hint {
+  color: #c9ffd9;
+}
+
+.switch-grid,
+.symbol-grid,
+.file-grid {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.switch-grid {
+  grid-template-columns: 1fr;
+}
+
+.symbol-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.symbol-grid button {
+  font-size: 30px;
+}
+
+.file-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.file-grid button {
+  font-size: 12px;
+  padding: 12px 6px;
+  border-radius: 14px;
+}
+
+.file-grid button.selected-file {
+  background: #c9ffd9;
+  color: #102116;
+}
+
+.terminal-window {
+  background: #050608;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #c9ffd9;
+  font-family: monospace;
+  font-size: 13px;
+  text-align: left;
+  padding: 15px;
+  border-radius: 15px;
+  min-height: 170px;
+  max-height: 230px;
+  overflow-y: auto;
+  margin: 20px 0;
+}
+
+.terminal-window p {
+  margin: 0 0 8px;
+}
+
+.corrupted-message {
+  text-align: left;
+  font-family: monospace;
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+
+.marked {
+  color: #c9ffd9;
+  font-weight: bold;
+  text-shadow: 0 0 10px #c9ffd9;
+}
+
+.protocol-progress {
+  margin: 15px 0;
+  opacity: 0.9;
+}
+
+.cipher-box {
+  font-family: monospace;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.charge-bar {
+  width: 100%;
+  height: 18px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 25px 0;
+}
+
+#chargeFill {
+  width: 0%;
+  height: 100%;
+  background: #c9ffd9;
+  transition: width 0.1s linear;
+}
+
+.final-protocol-message {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+@keyframes pulseDot {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
 }
 
 @keyframes floatHearts {
