@@ -12,50 +12,34 @@
   <main class="card" id="gamesHomeScreen">
     <div class="emoji">🎮❤️</div>
     <h1>Our Little Games</h1>
-
     <p class="subtitle">
       Choose a game ya albe,<br>
       bas be careful... kel game fi shi khas fik ❤️
     </p>
 
-    <button onclick="showScreen('passwordScreen')">
-      Game 1 — 02-05-2026 💌
-    </button>
-
-    <button class="secondary-btn" onclick="startPuzzle()">
-      Game 2 — 06-05-2026 🧩
-    </button>
-
-    <button class="secondary-btn" onclick="showScreen('thousandScreen')">
-      Game 3 — The 1000 Pieces of Us ❤️
-    </button>
+    <button onclick="showScreen('passwordScreen')">Game 1 — 02-05-2026 💌</button>
+    <button class="secondary-btn" onclick="startPuzzle()">Game 2 — 06-05-2026 🧩</button>
+    <button class="secondary-btn" onclick="showScreen('thousandScreen')">Game 3 — The 1000 Pieces of Us ❤️</button>
   </main>
 
   <main class="card hidden" id="passwordScreen">
     <div class="emoji">💌</div>
     <h1>Game 1</h1>
     <p class="subtitle">02-05-2026</p>
-
     <p class="subtitle">
       Step 1 is done, bas mafiye fawtik hek...<br>
       prove eno ente my favorite person<br>
       w ktebe l mot cache li deja hallayti 😜
     </p>
-
     <input type="password" id="passwordInput" placeholder="Enter the magic word..." autocomplete="off" />
     <button onclick="checkPassword()">Open my heart ❤️</button>
-
-    <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">
-      Back to games 🎮
-    </button>
-
+    <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
     <p class="error" id="passwordError"></p>
   </main>
 
   <main class="card hidden" id="questionScreen">
     <div class="emoji">🥰</div>
     <h1>Complete the gap</h1>
-
     <p class="subtitle">
       W hala2 step 2, fi jemle seret eyellik yeha 982 marra<br>
       (lyom bi siro 983), awlik btetzakaria?
@@ -65,7 +49,6 @@
       w <span class="gap">__________</span>,<br>
       w marte l mousta2baliye.
     </p>
-
     <input type="text" id="answerInput" placeholder="Write the missing words..." autocomplete="off" />
     <button onclick="checkAnswer()">Continue ya hayete 💕</button>
     <p class="error" id="answerError"></p>
@@ -74,7 +57,6 @@
   <main class="letter-card hidden" id="letterScreen">
     <div class="emoji">❤️</div>
     <h1>Dear Eleonor,</h1>
-
     <div class="letter">
       <p>This letter is not just another “I love you” like all the ones before.</p>
       <p>This one comes from a deeper place.</p>
@@ -97,7 +79,6 @@
       <p>I love you more than words can ever explain…<br>more than time can measure…<br>and more than anything I’ve ever known.</p>
       <p class="signature">Jad ❤️</p>
     </div>
-
     <button onclick="showScreen('proofScreen')">Your proof is here 📸</button>
     <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
@@ -114,14 +95,11 @@
     <div class="emoji">🧩</div>
     <h1>Game 2</h1>
     <p class="subtitle">06-05-2026</p>
-
     <p class="subtitle">
       Rakkbe el soura ya albe…<br>
       tap two pieces to switch them ❤️
     </p>
-
     <div id="puzzleBoard" class="puzzle-board"></div>
-
     <button class="secondary-btn" onclick="shufflePuzzle()">Shuffle again 🔁</button>
     <button onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
@@ -142,7 +120,6 @@
       Ktebe el code li l2ayti bel notes<br>
       w khallina nkammel ❤️
     </p>
-
     <input type="text" id="notesCodeInput" placeholder="Enter the notes code..." autocomplete="off" />
     <button onclick="checkNotesCode()">Unlock the next letter 💌</button>
     <p class="error" id="notesCodeError"></p>
@@ -151,7 +128,6 @@
   <main class="letter-card hidden" id="secondLetterScreen">
     <div class="emoji">💖</div>
     <h1>My beautiful Eleonor,</h1>
-
     <div class="letter">
       <p>I don’t even know how to explain how beautiful you are to me.</p>
       <p>You are not just pretty in the way people notice when they see you.<br>You are beautiful in the way you smile, in the way you look at me, in the way you make simple moments feel special.</p>
@@ -164,7 +140,6 @@
       <p>I love you so much, mon bebe Eleo.<br>More than yesterday, less than tomorrow.</p>
       <p class="signature">Jad ❤️</p>
     </div>
-
     <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
   </main>
 
@@ -177,30 +152,39 @@
         Today is Day 1000.<br>
         But the final message is locked into 5 pieces.<br><br>
         Solve the games, collect the pieces,<br>
-        and open the final door.
+        and open the final letter.
       </p>
-
       <button onclick="startThousandGame()">Start Day 1000 ❤️</button>
       <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
     </div>
 
     <div id="heartPuzzle" class="hidden">
-      <h2>Piece 1 — The Locked Hearts</h2>
+      <h2>Piece 1 — The Sentence of Hearts</h2>
       <p class="subtitle">
-        Click the correct hearts in the correct order.<br>
-        Hint: build a sentence that feels like us.
+        Click the words in the correct order to build the hidden sentence.
       </p>
 
       <div class="heart-grid">
-        <button onclick="chooseHeart('home')">home</button>
-        <button onclick="chooseHeart('coffee')">coffee</button>
-        <button onclick="chooseHeart('choose')">choose</button>
-        <button onclick="chooseHeart('always')">always</button>
-        <button onclick="chooseHeart('again')">again</button>
-        <button onclick="chooseHeart('laugh')">laugh</button>
-        <button onclick="chooseHeart('you')">you</button>
+        <button onclick="chooseHeart('every')">every</button>
         <button onclick="chooseHeart('maybe')">maybe</button>
+        <button onclick="chooseHeart('life')">life</button>
+        <button onclick="chooseHeart('choose')">choose</button>
+        <button onclick="chooseHeart('in')">in</button>
+        <button onclick="chooseHeart('always')">always</button>
+        <button onclick="chooseHeart('you')">you</button>
+        <button onclick="chooseHeart('again')">again</button>
+        <button onclick="chooseHeart('i')">i</button>
+        <button onclick="chooseHeart('will')">will</button>
+        <button onclick="chooseHeart('coffee')">coffee</button>
+        <button onclick="chooseHeart('home')">home</button>
+        <button onclick="chooseHeart('forever')">forever</button>
+        <button onclick="chooseHeart('laugh')">laugh</button>
         <button onclick="chooseHeart('trust')">trust</button>
+        <button onclick="chooseHeart('heart')">heart</button>
+        <button onclick="chooseHeart('smile')">smile</button>
+        <button onclick="chooseHeart('dream')">dream</button>
+        <button onclick="chooseHeart('safe')">safe</button>
+        <button onclick="chooseHeart('star')">star</button>
       </div>
 
       <p class="piece-progress">Selected: <span id="heartProgress">none</span></p>
@@ -209,13 +193,13 @@
     </div>
 
     <div id="mazePuzzle" class="hidden">
-      <h2>Piece 2 — The Little Maze</h2>
+      <h2>Piece 2 — The Long Way Home</h2>
       <p class="subtitle">
         Move the heart from START to END.<br>
         Avoid the dark blocks.
       </p>
 
-      <div class="maze-board" id="mazeBoard"></div>
+      <div class="maze-board big-maze" id="mazeBoard"></div>
 
       <div class="maze-controls">
         <button onclick="moveMaze('up')">↑</button>
@@ -229,13 +213,13 @@
     </div>
 
     <div id="safePuzzle" class="hidden">
-      <h2>Piece 3 — The Day 1000 Safe</h2>
+      <h2>Piece 3 — The Day Zero Safe</h2>
       <p class="subtitle">
         Set the safe code.<br>
-        Hint: today is not a date. It is a number.
+        Hint: today is Day 1000, but when was Day 0?
       </p>
 
-      <div class="safe-code">
+      <div class="safe-code six-digits">
         <div>
           <button onclick="changeDigit(0, 1)">+</button>
           <div id="digit0">0</div>
@@ -256,76 +240,95 @@
           <div id="digit3">0</div>
           <button onclick="changeDigit(3, -1)">−</button>
         </div>
+        <div>
+          <button onclick="changeDigit(4, 1)">+</button>
+          <div id="digit4">0</div>
+          <button onclick="changeDigit(4, -1)">−</button>
+        </div>
+        <div>
+          <button onclick="changeDigit(5, 1)">+</button>
+          <div id="digit5">0</div>
+          <button onclick="changeDigit(5, -1)">−</button>
+        </div>
       </div>
 
       <button onclick="checkSafe()">Open Safe 🔐</button>
       <p class="error" id="safeError"></p>
     </div>
 
-    <div id="balancePuzzle" class="hidden">
-      <h2>Piece 4 — Past & Future</h2>
+    <div id="namePuzzle" class="hidden">
+      <h2>Piece 4 — The Name Game</h2>
       <p class="subtitle">
-        Sort every word to the right side.<br>
-        Past memories on the left, future dreams on the right.
+        Write the names of our little family.<br>
+        2 in your car, 1 in mine, 1 in your house,<br>
+        and don’t forget our small living friend.
       </p>
 
-      <div id="wordBank" class="word-bank"></div>
+      <input type="text" id="name1" placeholder="Your car — plush 1" autocomplete="off" />
+      <input type="text" id="name2" placeholder="Your car — plush 2" autocomplete="off" />
+      <input type="text" id="name3" placeholder="My car" autocomplete="off" />
+      <input type="text" id="name4" placeholder="Your house" autocomplete="off" />
+      <input type="text" id="name5" placeholder="Small living friend" autocomplete="off" />
 
-      <div class="balance-columns">
-        <div>
-          <h3>Past</h3>
-          <div id="pastBox" class="drop-box"></div>
-        </div>
-        <div>
-          <h3>Future</h3>
-          <div id="futureBox" class="drop-box"></div>
-        </div>
-      </div>
-
-      <button onclick="checkBalance()">Check Sorting</button>
-      <button class="secondary-btn" onclick="resetBalance()">Reset Sorting</button>
-      <p class="error" id="balanceError"></p>
+      <button onclick="checkNames()">Check Names ❤️</button>
+      <p class="error" id="nameError"></p>
     </div>
 
-    <div id="realCluePuzzle" class="hidden">
-      <h2>Piece 5 — The Real World Piece</h2>
+    <div id="countdownPuzzle" class="hidden">
+      <h2>Piece 5 — The Italy Countdown</h2>
       <p class="subtitle">
-        The final piece is not on the screen.<br>
-        It is hiding somewhere close to a smile.
+        Countdown to 14 August.
       </p>
 
-      <input type="text" id="realClueInput" placeholder="Enter the hidden code..." autocomplete="off" />
-      <button onclick="checkRealClue()">Unlock Final Door</button>
-      <p class="error" id="realClueError"></p>
+      <div class="countdown-box" id="italyCountdown">Loading...</div>
 
-      <p class="small-joke">
-        For testing: write DAY 1000
+      <p class="subtitle">
+        You can add only one emoji.
       </p>
+
+      <input type="text" id="emojiInput" maxlength="4" placeholder="One emoji only..." autocomplete="off" />
+      <button onclick="checkEmoji()">Unlock Letter</button>
+      <p class="error" id="emojiError"></p>
     </div>
 
     <div id="thousandFinal" class="hidden">
       <div class="emoji">💖</div>
-      <h1>All Pieces Collected</h1>
+      <h1>Happy 1000 Days</h1>
 
-      <p class="subtitle">
-        1000 days with you.<br>
-        1000 little moments.<br>
-        1000 reasons to choose you again.
-      </p>
+      <div class="letter final-letter">
+        <p>My beautiful Eleonor,</p>
 
-      <h2>Final Question</h2>
-      <p class="subtitle">What are you to me?</p>
+        <p>Today marks 1000 days of us.</p>
 
-      <input type="text" id="thousandFinalInput" placeholder="Final answer..." autocomplete="off" />
-      <button onclick="checkThousandFinal()">Open Message ❤️</button>
-      <p class="error" id="thousandFinalError"></p>
+        <p>1000 days since life started feeling different, softer, warmer, and more meaningful because you became part of it.</p>
 
-      <div id="thousandReward" class="hidden">
-        <div class="final-message-box">
-          If life restarted tomorrow,<br>
-          I would search for you again.<br><br>
-          Happy 1000th day, my love ❤️
-        </div>
+        <p>When I think about 1000 days, it feels like a huge number. But at the same time, with you, it feels like it passed so fast, because every moment with you became something I wanted to keep.</p>
+
+        <p>In these 1000 days, we laughed, we loved, we had beautiful memories, difficult moments, silly moments, emotional moments, and moments that only we understand.</p>
+
+        <p>And through all of them, one thing stayed the same: you are the person I choose.</p>
+
+        <p>I choose your smile, your heart, your laugh, your softness, your craziness, your way of loving, and even the tiny details you don’t notice about yourself.</p>
+
+        <p>I choose the calm days with you, the adventures with you, the talks with you, the little jokes, the car moments, the plans, the dreams, and even the future we still did not live yet.</p>
+
+        <p>Thank you for being my love, my safe place, my favorite person, and the woman I want beside me in every version of life.</p>
+
+        <p>If I could go back to day one, knowing everything we would live together, I would still choose you again, without thinking twice.</p>
+
+        <p>And after 1000 days, I don’t feel like this is an ending or even just an anniversary.</p>
+
+        <p>I feel like it is only the beginning of a much bigger story.</p>
+
+        <p>One day, we will look back at this website and smile. Maybe after many years, maybe with our family around us, maybe after thousands and thousands more days.</p>
+
+        <p>And I hope you will remember that on day 1000, I wanted you to know one simple thing:</p>
+
+        <p>I love you deeply. I choose you completely. And I want my future to have you in it.</p>
+
+        <p>Happy 1000 days together, ya albe.</p>
+
+        <p class="signature">Jad ❤️</p>
       </div>
 
       <button class="secondary-btn" onclick="showScreen('gamesHomeScreen')">Back to games 🎮</button>
